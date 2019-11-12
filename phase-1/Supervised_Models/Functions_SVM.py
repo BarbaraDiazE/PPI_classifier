@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-def test_compound(Data, Name, descriptors):
+def test_compound(Data,Library, Name, descriptors):
     """
     Data, DataFrame with Dataset
     Name, str compound name
@@ -10,7 +10,7 @@ def test_compound(Data, Name, descriptors):
     """
     DF = Data[Data["Library"]== Library]
     compound = DF[DF["Name"]== Name]
-    compound = test[descriptors]
+    compound = compound[descriptors]
     return compound
 
 def test_compound_real_category(Data, Name, target):
@@ -20,5 +20,5 @@ def test_compound_real_category(Data, Name, target):
     target, str target category
     """
     test = Data[Data["Name"]== Name]
-    result = test[target]
+    result = list(test[target])
     return result
