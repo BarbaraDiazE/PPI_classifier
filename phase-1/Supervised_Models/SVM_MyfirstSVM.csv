@@ -1,2 +1,3 @@
-,Method,Kernel,descriptors
-0,SVM,rbf,"['HBA', 'HBD', 'RB', 'LogP', 'TPSA', 'MW', 'Heavy Atom', 'Ring Count', 'Fraction CSP3']"
+,Method,Kernel,descriptors,Accuracy,F1,Confusion matrix
+0,SVM,rbf,"['HBA', 'HBD', 'RB', 'LogP', 'TPSA', 'MW', 'Heavy Atom', 'Ring Count', 'Fraction CSP3']",0.9274447949526814,0.14814814814814814,"[[292   1]
+ [ 22   2]]"
