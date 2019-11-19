@@ -28,10 +28,10 @@ def test_compound_real_category(Data, Name, target):
     result = list(test[target])
     return result
 
-def plot_roc(ref_output, y_test, y_score):
+def plot_roc(ref_output, y_test, y_score, root_ROC):
     fpr, tpr, _ = roc_curve(y_test, y_score)
     roc_auc = auc(fpr, tpr)
-    pd.DataFrame.from_dict({"fpr": fpr , "tpr": tpr}).to_csv("ROC_data_"+str(ref_output)+".csv", sep = ",")
+    pd.DataFrame.from_dict({"fpr": fpr , "tpr": tpr}).to_csv(str(root_ROC) + "/ROC_data_"+str(ref_output)+".csv", sep = ",")
     plt.figure()
     lw = 2
     plt.plot(fpr, tpr, color='red', lw=lw, label='ROC curve (area = %0.2f)' % roc_auc)
@@ -42,12 +42,12 @@ def plot_roc(ref_output, y_test, y_score):
     plt.ylabel('True Positive Rate')
     plt.title('ROC curve')
     plt.legend(loc="lower right")
-    plt.savefig("roc" + str(ref_output) + ".png")
+    plt.savefig(str(root_ROC) + "/roc" + str(ref_output) + ".png")
     plt.show()
     
     return roc_auc
 
-def svm_report(ref_output, Data,  kernel,fraction, y_test, predictions, descriptors, roc_auc):
+def svm_report(ref_output, Data,  kernel,fraction, y_test, predictions, descriptors, roc_auc, root_Info):
     data = {
                 ('Info', "Method"): "SVM",
                 ('Info', "Kernel"): str(kernel),
@@ -63,6 +63,6 @@ def svm_report(ref_output, Data,  kernel,fraction, y_test, predictions, descript
                 ('Metrics', "Confusion matrix"): confusion_matrix(y_test, predictions)
             }
     Report = pd.Series(data)
-    Report.to_csv("SVM_"+str(ref_output)+".csv", sep = ",")
+    Report.to_csv(str(root_Info) + "/SVM_"+str(ref_output)+".csv", sep = ",")
 
 
