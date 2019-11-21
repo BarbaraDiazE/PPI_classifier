@@ -47,19 +47,73 @@ def plot_roc(ref_output, y_test, y_score, root_ROC):
     
     return roc_auc
 
-def svm_report(ref_output, Data,  kernel,fraction, y_test, predictions, descriptors, roc_auc, root_Info):
-    data = {
+def get_atributes(kernel, model):
+    if kernel == "linear":
+        atributes = {
+            "N support": " ".join(map(str, list(model.n_support_))),
+            "coef": model.coef_,
+            "Intercept": model.intercept_[0],
+            "fit_status": model.fit_status_,
+            "probA": model.probA_[0],
+            "probB": model.probB_[0]
+            }
+    else:
+        atributes = {
+            "N support": " ".join(map(str, list(model.n_support_))),
+            "Intercept": model.intercept_[0],
+            "fit_status": model.fit_status_,
+            "probA": model.probA_[0],
+            "probB": model.probB_[0]
+            
+            }
+    return atributes
+
+def svm_report(ref_output, Data, parameters, y_test, predictions, descriptors,atributes ,roc_auc, root_Info):
+    if parameters["kernel"] == "linear":
+        df = pd.DataFrame({ 'Descriptors': descriptors,
+                            'Coeff': np.around(atributes["coef"][0],3)})
+        df = df.sort_values(by='Coeff', ascending=False)
+        df.to_csv(str(root_Info) + "/SVM_coeff_"+str(ref_output)+".csv", sep = ",")
+        data = {
                 ('Info', "Method"): "SVM",
-                ('Info', "Kernel"): str(kernel),
+                ('Info', "Class weight"): parameters["Class weight"],
+                ('Info', "Kernel"): parameters["kernel"],
                 ('Info', "Libraries"): " ".join(map(str, list(Data.Library.unique()))),
-                ('Info', "Test fraction"): fraction * 100,
+                ('Info', "Test fraction"): parameters["fraction"],
+                ('Info', "Descriptors"): df.Descriptors.to_list(),               
+                ('Results', "coef"): df.Coeff.to_list(),
+                ('Results', "N support"): atributes["N support"],
+                ('Results', "Intercept"): atributes["Intercept"],
+                ('Results', "fit_status"): atributes["fit_status"],
+                ('Results', "probA"): round(atributes["probA"],2),
+                ('Results', "probB"): round(atributes["probB"],2),
+                ('Metrics',"Accuracy"):round(accuracy_score(y_test, predictions),2),   
+                ('Metrics',"Balanced Accuracy"): round(balanced_accuracy_score(y_test, predictions),2),
+                ('Metrics',"Precision"):round(precision_score(y_test, predictions),2),
+                ('Metrics',"F1"):round(f1_score(y_test, predictions),2),
+                ('Metrics',"ROC AUC score"):round(roc_auc_score(y_test, predictions),2),   
+                ('Metrics',"AUC"):round(roc_auc,2),       
+                ('Metrics', "Confusion matrix"): confusion_matrix(y_test, predictions)
+            }
+    else:
+        data = {
+                ('Info', "Method"): "SVM",
+                ('Info', "Class weight"): parameters["Class weight"],
+                ('Info', "Kernel"): parameters["kernel"],
+                ('Info', "Libraries"): " ".join(map(str, list(Data.Library.unique()))),
+                ('Info', "Test fraction"): parameters["fraction"],
                 ('Info', "Descriptors"): ' '.join(map(str, descriptors)),               
-                ('Metrics',"Accuracy"):accuracy_score(y_test, predictions),   
-                ('Metrics',"Balanced Accuracy"): balanced_accuracy_score(y_test, predictions),
+                ('Results', "N support"):  atributes["N support"],
+                ('Results', "Intercept"): round(atributes["Intercept"],2),
+                ('Results', "fit_status"): atributes["fit_status"],
+                ('Results', "probA"): round(atributes["probA"],2),
+                ('Results', "probB"): round(atributes["probB"],2),
+                ('Metrics',"Accuracy"): round(accuracy_score(y_test, predictions),2),   
+                ('Metrics',"Balanced Accuracy"): round(balanced_accuracy_score(y_test, predictions),2),
                 ('Metrics',"Precision"):precision_score(y_test, predictions),
-                ('Metrics',"F1"):f1_score(y_test, predictions),
-                ('Metrics',"ROC AUC score"):roc_auc_score(y_test, predictions),   
-                ('Metrics',"AUC"):roc_auc,       
+                ('Metrics',"F1"):round(f1_score(y_test, predictions),2),
+                ('Metrics',"ROC AUC score"):round(roc_auc_score(y_test, predictions),2),   
+                ('Metrics',"AUC"):round(roc_auc,2),       
                 ('Metrics', "Confusion matrix"): confusion_matrix(y_test, predictions)
             }
     Report = pd.Series(data)

@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 import sklearn
-from sklearn.linear_model import LogisticRegression
+#from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, balanced_accuracy_score, precision_score, f1_score, roc_auc_score, auc, roc_curve, confusion_matrix
 
 def test_compound(Data,Library, Name, descriptors):

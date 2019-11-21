@@ -1,13 +1,20 @@
 Info,Method,SVM
-Info,Kernel,rbf
+Info,Class weight,balanced
+Info,Kernel,linear
 Info,Libraries,Epidatabase FDA PPI AFRODB BIOFACQUIM
 Info,Test fraction,30.0
-Info,Descriptors,HBA HBD RB LogP TPSA MW Heavy Atom Ring Count Fraction CSP3
-Metrics,Accuracy,0.9499473129610115
-Metrics,Balanced Accuracy,0.7084112305535154
-Metrics,Precision,0.7733333333333333
-Metrics,F1,0.5497630331753555
-Metrics,ROC AUC score,0.7084112305535154
-Metrics,AUC,0.8960426821125725
-Metrics,Confusion matrix,"[[1745   17]
- [  78   58]]"
+Info,Descriptors,"['Heavy Atom', 'Ring Count', 'Fraction CSP3', 'TPSA', 'MW', 'RB', 'LogP', 'HBA', 'HBD']"
+Results,coef,"[0.025, 0.025, 0.025, 0.016, 0.011, -0.096, -0.187, -0.584, -0.685]"
+Results,N support,771 73
+Results,Intercept,-2.576649818718737
+Results,fit_status,0
+Results,probA,-0.85
+Results,probB,-2.38
+Metrics,Accuracy,0.73
+Metrics,Balanced Accuracy,0.78
+Metrics,Precision,0.21
+Metrics,F1,0.34
+Metrics,ROC AUC score,0.78
+Metrics,AUC,0.85
+Metrics,Confusion matrix,"[[421 161]
+ [  8  43]]"
