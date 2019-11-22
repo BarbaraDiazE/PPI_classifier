@@ -50,7 +50,7 @@ def plot_roc(ref_output, y_test, y_score, root_ROC):
 
 def lrg_report(ref_output, Data, parameters, y_test, predictions, descriptors, atributes,roc_auc, root_Info):
     df = pd.DataFrame({ 'Descriptors': descriptors,
-             'Coeff': atributes["coeff"] })
+             'Coeff': np.around(atributes["coeff"],2) })
     df = df.sort_values(by='Coeff', ascending=False)
     df.to_csv(str(root_Info) + "/LRG_coeff_"+str(ref_output)+".csv", sep = ",")
     data = {
@@ -63,14 +63,14 @@ def lrg_report(ref_output, Data, parameters, y_test, predictions, descriptors, a
                 ('Info', "Descriptors"):  " ".join(map(str, list(df["Descriptors"]))),    
                 ('Results', "Coeff"):  " ".join(map(str, list(np.around(np.array(df["Coeff"]),2)))),         
                 ('Results', "Clases"): " ".join(map(str, list(atributes["classes"]))),
-                ('Results', "Interception"): atributes["inter"][0],
+                ('Results', "Interception"): round(atributes["inter"][0], 2),
                 ('Results', "N iter"): atributes["iter"][0],
-                ('Metrics',"Accuracy"):accuracy_score(y_test, predictions),   
-                ('Metrics',"Balanced Accuracy"): balanced_accuracy_score(y_test, predictions),
-                ('Metrics',"Precision"):precision_score(y_test, predictions),
-                ('Metrics',"F1"):f1_score(y_test, predictions),
-                ('Metrics',"ROC AUC score"):roc_auc_score(y_test, predictions),   
-                ('Metrics',"AUC"):roc_auc,       
+                ('Metrics',"Accuracy"):round(accuracy_score(y_test, predictions),2),   
+                ('Metrics',"Balanced Accuracy"): round(balanced_accuracy_score(y_test, predictions),2),
+                ('Metrics',"Precision"): round(precision_score(y_test, predictions),2),
+                ('Metrics',"F1"): round(f1_score(y_test, predictions),2),
+                ('Metrics',"ROC AUC score"): round(roc_auc_score(y_test, predictions),2),   
+                ('Metrics',"AUC"): round(roc_auc,2),       
                 ('Metrics', "Confusion matrix"): confusion_matrix(y_test, predictions)
             }
     Report = pd.Series(data)
