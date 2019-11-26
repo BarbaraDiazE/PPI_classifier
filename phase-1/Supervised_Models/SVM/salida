@@ -1,0 +1,53 @@
+Sender: LSF System <lsfadmin@mn5>
+Subject: Job 366986: <#!/bin/bash;#BSUB -q q_hpc ;#BSUB -n 1;#BSUB -m g1;#BSUB -M 32768;#BSUB -oo salida;#BSUB -eo error;python instructions.py > in cluster <cluster1> Done
+
+Job <#!/bin/bash;#BSUB -q q_hpc ;#BSUB -n 1;#BSUB -m g1;#BSUB -M 32768;#BSUB -oo salida;#BSUB -eo error;python instructions.py > was submitted from host <mn328> by user <jlmf> in cluster <cluster1>.
+Job was executed on host(s) <mn5>, in queue <q_hpc>, as user <jlmf> in cluster <cluster1>.
+</home/jlmf_g/jlmf> was used as the home directory.
+</tmpu/jlmf_g/jlmf/B/PPI_classifier/phase-1/Supervised_Models/SVM> was used as the working directory.
+Started at Tue Nov 26 15:25:36 2019
+Results reported on Tue Nov 26 15:28:05 2019
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -q q_hpc 
+#BSUB -n 1
+#BSUB -m g1
+#BSUB -M 32768
+#BSUB -oo salida
+#BSUB -eo error
+python instructions.py 
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   149.88 sec.
+    Max Memory :                                 171.78 MB
+    Average Memory :                             171.39 MB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   1865 MB
+    Max Processes :                              5
+    Max Threads :                                21
+
+The output (if any) follows:
+
+Configurar ubicacion
+['No' 'Yes']
+Libraries are:  ['AFRODB' 'BIOFACQUIM' 'Epidatabase' 'FDA' 'PPI']
+Total compounds  21084
+SVC(C=1.0, cache_size=16, class_weight='balanced', coef0=0.0,
+    decision_function_shape='ovr', degree=3, gamma='auto_deprecated',
+    kernel='rbf', max_iter=-1, probability=True, random_state=1992,
+    shrinking=True, tol=0.001, verbose=False)
+
+
+PS:
+
+Read file <error> for stderr output of this job.
+
