@@ -8,5 +8,5 @@ root = {"root": "/tmpu/jlmf_g/jlmf/B/PPI_classifier/phase-1/Databases/",
 descriptors = ['HBA', 'HBD', 'RB', 'LogP', 'TPSA', 'MW', 'Heavy Atom', 'Ring Count', 'Fraction CSP3']
 
 a = SVM(root, "Dataset.csv", "PPI", descriptors, 0.2)
-a.train_model('rbf', "balanced")
-a.report("D10L5P3SVM3A")
+a.train_model('linear', "balanced")
+a.report("D10L5P3SVM1A")
