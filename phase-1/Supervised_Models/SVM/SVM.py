@@ -13,6 +13,7 @@ class SVM:
     
     def __init__(self, root, input_file, target, descriptors, fraction):
         self.Data = pd.read_csv(str(root["root"]) + str(input_file)) 
+        self.Data = pd.DataFrame.sample(self.Data, frac=0.1, replace=True,  random_state=1992, axis=None) 
         self.fraction = fraction
         print(self.Data.PPI.unique())
         print("Libraries are: ", self.Data.Library.unique())
