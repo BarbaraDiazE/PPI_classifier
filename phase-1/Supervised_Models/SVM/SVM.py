@@ -7,36 +7,33 @@ from sklearn.preprocessing import label_binarize
 from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC
 
-from Functions_SVM import get_atributes, test_compound,test_compound_real_category, svm_report, plot_roc
+from Functions_SVM import get_atributes, test_compound, test_compound_real_category, svm_report, plot_roc
 
 class SVM:
     
     def __init__(self, root, input_file, target, descriptors, fraction):
-        self.Data  = pd.read_csv(str(root["root"]) + str(input_file))
-        #Muestreo
-        self.Data = pd.DataFrame.sample(self.Data, frac=0.1, replace=True,  random_state=1992, axis=None) 
+    	self.Data = pd.read_csv(str(root["root"]) + str(input_file)) 
         self.fraction = fraction
         print(self.Data.PPI.unique())
         print("Libraries are: ", self.Data.Library.unique())
-        #print("PPI modulator: ", self.Data[target].unique())
         print("Total compounds ", self.Data.shape[0])
         self.descriptors = descriptors
         self.target = target
         self.root = root
         
     def train_model(self, kernel, class_weight):
-        """
-        kernel: str, ‘linear’, ‘poly’, ‘rbf’, ‘sigmoid’, ‘precomputed’ )
+    	"""
+        kernel: str, ‘linear’, ‘poly’, ‘rbf’, ‘sigmoid’, ‘precomputed’
         class_weight : ‘balanced’
         """
         y = np.array(self.Data[self.target])
         y = label_binarize(y, classes = ["No", "Yes"])
-        X_train, X_test, y_train, y_test = train_test_split(self.Data[self.descriptors], y, test_size = self.fraction,random_state=1992)
+       	y = np.reshape(y,int(y.shape[0]))
+	X_train, X_test, y_train, y_test = train_test_split(self.Data[self.descriptors], y, test_size = self.fraction, random_state=1992)
         model = SVC(kernel = kernel, probability=True, cache_size = 16,  class_weight =  class_weight, random_state=1992)
         print(model)
         model.fit(X_train, y_train)
         self.atributes = get_atributes(kernel, model)
-        #print(self.atributes)
         self.parameters = { "Method": "Linear Regression",
                             "Class weight": class_weight,
                             "kernel": kernel,
