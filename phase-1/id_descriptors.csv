@@ -1,0 +1,11 @@
+,0,1,2,3,4,5,6,7,8,Id
+0,HBA,HBD,RB,LogP,TPSA,MW,Heavy Atom,Ring Count,,D1
+1,HBA,HBD,RB,LogP,TPSA,MW,Heavy Atom,Fraction CSP3,,D2
+2,HBA,HBD,RB,LogP,TPSA,MW,Ring Count,Fraction CSP3,,D3
+3,HBA,HBD,RB,LogP,TPSA,Heavy Atom,Ring Count,Fraction CSP3,,D4
+4,HBA,HBD,RB,LogP,MW,Heavy Atom,Ring Count,Fraction CSP3,,D5
+5,HBA,HBD,RB,TPSA,MW,Heavy Atom,Ring Count,Fraction CSP3,,D6
+6,HBA,HBD,LogP,TPSA,MW,Heavy Atom,Ring Count,Fraction CSP3,,D7
+7,HBA,RB,LogP,TPSA,MW,Heavy Atom,Ring Count,Fraction CSP3,,D8
+8,HBD,RB,LogP,TPSA,MW,Heavy Atom,Ring Count,Fraction CSP3,,D9
+9,HBA,HBD,RB,LogP,TPSA,MW,Heavy Atom,Ring Count,Fraction CSP3,D10
