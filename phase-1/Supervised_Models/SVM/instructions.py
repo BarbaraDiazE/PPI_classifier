@@ -9,8 +9,9 @@ descriptors = ['HBA', 'HBD', 'RB', 'LogP', 'TPSA', 'MW', 'Heavy Atom', 'Ring Cou
 
 def execute(root, input_file, target, descriptors, fraction, kernel, balanced, ref_output):
     a = SVM(root, input_file, target, descriptors, fraction)
-    a.train_model('linear', "balanced")
-    a.report("D10L5P3SVM1A")
+    a.train_model(kernel,balanced)
+    a.report(ref_output)
+    print("termine ", str(ref_output))
 
-execute(root, "Dataset.csv", "PPI", descriptors, 0.2, "poly", "balanced", "D10L5P3SVM2A")
-execute(root, "Dataset.csv", "PPI", descriptors, 0.2, "sigmoid", "balanced", "D10L5P3SVM4A")
+execute(root, "Dataset.csv", "PPI", descriptors, 0.3, "rbf", "balanced", "D10L5P5SVM3A")
+execute(root, "Dataset.csv", "PPI", descriptors, 0.3, "linear", "balanced", "D10L5P5SVM3A")
