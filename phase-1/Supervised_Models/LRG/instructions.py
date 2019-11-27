@@ -14,8 +14,8 @@ def execute(root, input_file, target, descriptors, fraction, class_weight, solve
     a.report(ref_output)
     print("report is done", str(ref_output))
 
-execute(root,"Dataset.csv",  "PPI", descriptors, 0.2, "balanced","newton-cg", "D10L5P3LRG1A" )
-execute(root,"Dataset.csv",  "PPI", descriptors, 0.2, "balanced","lbfgs", "D10L5P3LRG2A" )
-execute(root,"Dataset.csv",  "PPI", descriptors, 0.2, "balanced","liblinear", "D10L5P3LRG3A" )
-execute(root,"Dataset.csv",  "PPI", descriptors, 0.2, "balanced","sag", "D10L5P3LRG4A" )
-execute(root,"Dataset.csv",  "PPI", descriptors, 0.2, "balanced","saga", "D10L5P3LRG5A" )
+execute(root,"Dataset.csv",  "PPI", descriptors, 0.3, "balanced","newton-cg", "D10L5P5LRG1A" )
+execute(root,"Dataset.csv",  "PPI", descriptors, 0.3, "balanced","lbfgs", "D10L5P5LRG2A" )
+execute(root,"Dataset.csv",  "PPI", descriptors, 0.3, "balanced","liblinear", "D10L5P5LRG3A" )
+execute(root,"Dataset.csv",  "PPI", descriptors, 0.3, "balanced","sag", "D10L5P5LRG4A" )
+execute(root,"Dataset.csv",  "PPI", descriptors, 0.3, "balanced","saga", "D10L5P5LRG5A" )
