@@ -14,4 +14,4 @@ def execute(root, input_file, target, descriptors, fraction, kernel, balanced, r
     print("termine ", str(ref_output))
 
 execute(root, "Dataset.csv", "PPI", descriptors, 0.3, "rbf", "balanced", "D10L5P5SVM3A")
-execute(root, "Dataset.csv", "PPI", descriptors, 0.3, "linear", "balanced", "D10L5P5SVM3A")
+execute(root, "Dataset.csv", "PPI", descriptors, 0.3, "linear", "balanced", "D10L5P5SVM1A")
