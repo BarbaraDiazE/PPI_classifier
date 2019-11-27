@@ -1,13 +1,10 @@
 import pandas as pd
 import numpy as np
-import seaborn as sns
-import matplotlib.pyplot as plt
 
 import os
 
 from sklearn.preprocessing import label_binarize
 from sklearn.model_selection import train_test_split
-
 from sklearn.linear_model import LogisticRegression
 
 from Functions_LRG import test_compound,test_compound_real_category, lrg_report, plot_roc

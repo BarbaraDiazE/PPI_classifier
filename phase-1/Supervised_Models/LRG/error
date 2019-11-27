@@ -1,0 +1,28 @@
+/baul1/jlmf_g/jlmf/miniconda3/lib/python3.7/site-packages/sklearn/utils/validation.py:724: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+  y = column_or_1d(y, warn=True)
+/tmpu/jlmf_g/jlmf/B/PPI_classifier/phase-1/Supervised_Models/LRG/Functions_LRG.py:77: FutureWarning: The signature of `Series.to_csv` was aligned to that of `DataFrame.to_csv`, and argument 'header' will change its default value from False to True: please pass an explicit value to suppress this warning.
+  Report.to_csv(str(root_Info) + "/LRG_info_"+str(ref_output)+".csv", sep = ",")
+/baul1/jlmf_g/jlmf/miniconda3/lib/python3.7/site-packages/sklearn/utils/validation.py:724: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+  y = column_or_1d(y, warn=True)
+/tmpu/jlmf_g/jlmf/B/PPI_classifier/phase-1/Supervised_Models/LRG/Functions_LRG.py:77: FutureWarning: The signature of `Series.to_csv` was aligned to that of `DataFrame.to_csv`, and argument 'header' will change its default value from False to True: please pass an explicit value to suppress this warning.
+  Report.to_csv(str(root_Info) + "/LRG_info_"+str(ref_output)+".csv", sep = ",")
+/baul1/jlmf_g/jlmf/miniconda3/lib/python3.7/site-packages/sklearn/utils/validation.py:724: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+  y = column_or_1d(y, warn=True)
+/baul1/jlmf_g/jlmf/miniconda3/lib/python3.7/site-packages/sklearn/linear_model/logistic.py:1544: UserWarning: 'n_jobs' > 1 does not have any effect when 'solver' is set to 'liblinear'. Got 'n_jobs' = 2.
+  " = {}.".format(effective_n_jobs(self.n_jobs)))
+/tmpu/jlmf_g/jlmf/B/PPI_classifier/phase-1/Supervised_Models/LRG/Functions_LRG.py:77: FutureWarning: The signature of `Series.to_csv` was aligned to that of `DataFrame.to_csv`, and argument 'header' will change its default value from False to True: please pass an explicit value to suppress this warning.
+  Report.to_csv(str(root_Info) + "/LRG_info_"+str(ref_output)+".csv", sep = ",")
+/baul1/jlmf_g/jlmf/miniconda3/lib/python3.7/site-packages/sklearn/utils/validation.py:724: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+  y = column_or_1d(y, warn=True)
+/baul1/jlmf_g/jlmf/miniconda3/lib/python3.7/site-packages/sklearn/linear_model/sag.py:337: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  "the coef_ did not converge", ConvergenceWarning)
+/tmpu/jlmf_g/jlmf/B/PPI_classifier/phase-1/Supervised_Models/LRG/Functions_LRG.py:77: FutureWarning: The signature of `Series.to_csv` was aligned to that of `DataFrame.to_csv`, and argument 'header' will change its default value from False to True: please pass an explicit value to suppress this warning.
+  Report.to_csv(str(root_Info) + "/LRG_info_"+str(ref_output)+".csv", sep = ",")
+/baul1/jlmf_g/jlmf/miniconda3/lib/python3.7/site-packages/sklearn/utils/validation.py:724: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+  y = column_or_1d(y, warn=True)
+/baul1/jlmf_g/jlmf/miniconda3/lib/python3.7/site-packages/sklearn/linear_model/sag.py:337: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  "the coef_ did not converge", ConvergenceWarning)
+/tmpu/jlmf_g/jlmf/B/PPI_classifier/phase-1/Supervised_Models/LRG/Functions_LRG.py:77: FutureWarning: The signature of `Series.to_csv` was aligned to that of `DataFrame.to_csv`, and argument 'header' will change its default value from False to True: please pass an explicit value to suppress this warning.
+  Report.to_csv(str(root_Info) + "/LRG_info_"+str(ref_output)+".csv", sep = ",")
+/baul1/jlmf_g/jlmf/miniconda3/lib/python3.7/site-packages/sklearn/linear_model/logistic.py:947: ConvergenceWarning: lbfgs failed to converge. Increase the number of iterations.
+  "of iterations.", ConvergenceWarning)

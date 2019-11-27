@@ -1,0 +1,18 @@
+Info,Method,Linear Regression
+Info,Class weight,balanced
+Info,Solver,lbfgs
+Info,Libraries,AFRODB BIOFACQUIM Epidatabase FDA PPI
+Info,Test fraction,30.0
+Info,Descriptors,LogP TPSA Heavy Atom Ring Count Fraction CSP3 MW RB HBA HBD
+Results,Coeff,0.05 0.04 0.02 0.02 0.02 0.01 -0.08 -0.77 -0.94
+Results,Clases,0 1
+Results,Interception,-1.65
+Results,N iter,100
+Metrics,Accuracy,0.7
+Metrics,Balanced Accuracy,0.74
+Metrics,Precision,0.21
+Metrics,F1,0.33
+Metrics,ROC AUC score,0.74
+Metrics,AUC,0.8
+Metrics,Confusion matrix,"[[3950 1787]
+ [ 124  465]]"
