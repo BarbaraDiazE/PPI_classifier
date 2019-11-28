@@ -1,0 +1,10 @@
+,Descriptors,Coeff
+5,MW,1.18
+4,TPSA,0.96
+6,Heavy Atom,0.54
+7,Ring Count,0.54
+8,Fraction CSP3,0.54
+3,LogP,-0.1
+2,RB,-0.89
+1,HBD,-1.46
+0,HBA,-1.66
