@@ -1,13 +1,10 @@
 import pandas as pd
 import numpy as np
-import seaborn as sns
-import matplotlib.pyplot as plt
 
 import os
 
-from sklearn.preprocessing import label_binarize
+from sklearn.preprocessing import label_binarize, StandardScaler
 from sklearn.model_selection import train_test_split
-
 from sklearn.linear_model import LogisticRegression
 
 from Functions_LRG import test_compound,test_compound_real_category, lrg_report, plot_roc
@@ -34,7 +31,8 @@ class LRG:
         """
         y = np.array(self.Data[self.target])
         y = label_binarize(y, classes = ["No", "Yes"])
-        X_train, X_test, y_train, y_test = train_test_split(self.Data[self.descriptors], y, test_size = self.fraction,random_state=1992)
+        numerical_data = pd.DataFrame(StandardScaler().fit_transform(self.Data[self.descriptors]))
+        X_train, X_test, y_train, y_test = train_test_split(numerical_data, y, test_size = self.fraction, random_state=1992)
         model = LogisticRegression(fit_intercept=True, class_weight= class_weight, random_state= 1992, n_jobs = 2, solver = solver)
         model.fit(X_train, y_train)
         self.atributes = {"classes": model.classes_,

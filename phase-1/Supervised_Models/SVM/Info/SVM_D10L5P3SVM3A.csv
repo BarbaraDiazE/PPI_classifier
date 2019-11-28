@@ -4,16 +4,16 @@ Info,Kernel,rbf
 Info,Libraries,AFRODB BIOFACQUIM Epidatabase FDA PPI
 Info,Test fraction,20.0
 Info,Descriptors,HBA HBD RB LogP TPSA MW Heavy Atom Ring Count Fraction CSP3
-Results,N support,7772 1175
-Results,Intercept,-0.76
+Results,N support,7017 728
+Results,Intercept,-3.9
 Results,fit_status,0
-Results,probA,-2.97
-Results,probB,-0.61
-Metrics,Accuracy,0.96
-Metrics,Balanced Accuracy,0.84
-Metrics,Precision,0.8398692810457516
-Metrics,F1,0.76
-Metrics,ROC AUC score,0.84
-Metrics,AUC,0.97
-Metrics,Confusion matrix,"[[3794   49]
- [ 117  257]]"
+Results,probA,-1.84
+Results,probB,-2.33
+Metrics,Accuracy,0.81
+Metrics,Balanced Accuracy,0.83
+Metrics,Precision,0.29962894248608535
+Metrics,F1,0.44
+Metrics,ROC AUC score,0.83
+Metrics,AUC,0.91
+Metrics,Confusion matrix,"[[3088  755]
+ [  51  323]]"

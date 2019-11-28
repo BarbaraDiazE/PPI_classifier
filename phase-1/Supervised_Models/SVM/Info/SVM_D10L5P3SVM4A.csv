@@ -1,0 +1,19 @@
+Info,Method,SVM
+Info,Class weight,balanced
+Info,Kernel,sigmoid
+Info,Libraries,AFRODB BIOFACQUIM Epidatabase FDA PPI
+Info,Test fraction,20.0
+Info,Descriptors,HBA HBD RB LogP TPSA MW Heavy Atom Ring Count Fraction CSP3
+Results,N support,5668 571
+Results,Intercept,-21.97
+Results,fit_status,0
+Results,probA,-0.0
+Results,probB,-2.31
+Metrics,Accuracy,0.64
+Metrics,Balanced Accuracy,0.64
+Metrics,Precision,0.14512195121951219
+Metrics,F1,0.24
+Metrics,ROC AUC score,0.64
+Metrics,AUC,0.7
+Metrics,Confusion matrix,"[[2441 1402]
+ [ 136  238]]"

@@ -1,0 +1,107 @@
+Sender: LSF System <lsfadmin@mn43>
+Subject: Job 368832: <#!/bin/bash;#BSUB -q q_hpc;#BSUB -n 1;#BSUB -m g1;#BSUB -M 32768;#BSUB -oo salida;#BSUB -eo error;python instructions.py> in cluster <cluster1> Done
+
+Job <#!/bin/bash;#BSUB -q q_hpc;#BSUB -n 1;#BSUB -m g1;#BSUB -M 32768;#BSUB -oo salida;#BSUB -eo error;python instructions.py> was submitted from host <mn328> by user <jlmf> in cluster <cluster1>.
+Job was executed on host(s) <mn43>, in queue <q_hpc>, as user <jlmf> in cluster <cluster1>.
+</home/jlmf_g/jlmf> was used as the home directory.
+</tmpu/jlmf_g/jlmf/B/PPI_classifier/phase-1/Supervised_Models/LRG> was used as the working directory.
+Started at Wed Nov 27 17:38:16 2019
+Results reported on Wed Nov 27 17:38:49 2019
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -q q_hpc
+#BSUB -n 1
+#BSUB -m g1
+#BSUB -M 32768
+#BSUB -oo salida
+#BSUB -eo error
+python instructions.py
+
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   47.92 sec.
+    Max Memory :                                 361.08 MB
+    Average Memory :                             361.08 MB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   3497 MB
+    Max Processes :                              11
+    Max Threads :                                29
+
+The output (if any) follows:
+
+['No' 'Yes']
+Libraries are:  ['AFRODB' 'BIOFACQUIM' 'Epidatabase' 'FDA' 'PPI']
+Total compounds  21084
+model is trained
+report  D10L5P3LRG1A is Done
+report is done D10L5P3LRG1A
+['No' 'Yes']
+Libraries are:  ['AFRODB' 'BIOFACQUIM' 'Epidatabase' 'FDA' 'PPI']
+Total compounds  21084
+model is trained
+report  D10L5P3LRG2A is Done
+report is done D10L5P3LRG2A
+['No' 'Yes']
+Libraries are:  ['AFRODB' 'BIOFACQUIM' 'Epidatabase' 'FDA' 'PPI']
+Total compounds  21084
+model is trained
+report  D10L5P3LRG3A is Done
+report is done D10L5P3LRG3A
+['No' 'Yes']
+Libraries are:  ['AFRODB' 'BIOFACQUIM' 'Epidatabase' 'FDA' 'PPI']
+Total compounds  21084
+model is trained
+report  D10L5P3LRG4A is Done
+report is done D10L5P3LRG4A
+['No' 'Yes']
+Libraries are:  ['AFRODB' 'BIOFACQUIM' 'Epidatabase' 'FDA' 'PPI']
+Total compounds  21084
+model is trained
+report  D10L5P3LRG5A is Done
+report is done D10L5P3LRG5A
+['No' 'Yes']
+Libraries are:  ['AFRODB' 'BIOFACQUIM' 'Epidatabase' 'FDA' 'PPI']
+Total compounds  21084
+model is trained
+report  D10L5P5LRG1A is Done
+report is done D10L5P5LRG1A
+['No' 'Yes']
+Libraries are:  ['AFRODB' 'BIOFACQUIM' 'Epidatabase' 'FDA' 'PPI']
+Total compounds  21084
+model is trained
+report  D10L5P5LRG2A is Done
+report is done D10L5P5LRG2A
+['No' 'Yes']
+Libraries are:  ['AFRODB' 'BIOFACQUIM' 'Epidatabase' 'FDA' 'PPI']
+Total compounds  21084
+model is trained
+report  D10L5P5LRG3A is Done
+report is done D10L5P5LRG3A
+['No' 'Yes']
+Libraries are:  ['AFRODB' 'BIOFACQUIM' 'Epidatabase' 'FDA' 'PPI']
+Total compounds  21084
+model is trained
+report  D10L5P5LRG4A is Done
+report is done D10L5P5LRG4A
+['No' 'Yes']
+Libraries are:  ['AFRODB' 'BIOFACQUIM' 'Epidatabase' 'FDA' 'PPI']
+Total compounds  21084
+model is trained
+report  D10L5P5LRG5A is Done
+report is done D10L5P5LRG5A
+
+
+PS:
+
+Read file <error> for stderr output of this job.
+

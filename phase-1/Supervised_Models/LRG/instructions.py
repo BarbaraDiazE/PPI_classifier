@@ -8,7 +8,6 @@ descriptors = ['HBA', 'HBD', 'RB', 'LogP', 'TPSA', 'MW', 'Heavy Atom', 'Ring Cou
 
 def execute(root, input_file, target, descriptors, fraction, class_weight, solver, ref_output):
     a = LRG(root,input_file,  target, descriptors, 0.3)
-    print("clase is instanced")
     a.train_model(class_weight, solver)
     print("model is trained")
     a.report(ref_output)
@@ -19,3 +18,8 @@ execute(root,"Dataset.csv",  "PPI", descriptors, 0.2, "balanced","lbfgs", "D10L5
 execute(root,"Dataset.csv",  "PPI", descriptors, 0.2, "balanced","liblinear", "D10L5P3LRG3A" )
 execute(root,"Dataset.csv",  "PPI", descriptors, 0.2, "balanced","sag", "D10L5P3LRG4A" )
 execute(root,"Dataset.csv",  "PPI", descriptors, 0.2, "balanced","saga", "D10L5P3LRG5A" )
+execute(root,"Dataset.csv",  "PPI", descriptors, 0.3, "balanced","newton-cg", "D10L5P5LRG1A" )
+execute(root,"Dataset.csv",  "PPI", descriptors, 0.3, "balanced","lbfgs", "D10L5P5LRG2A" )
+execute(root,"Dataset.csv",  "PPI", descriptors, 0.3, "balanced","liblinear", "D10L5P5LRG3A" )
+execute(root,"Dataset.csv",  "PPI", descriptors, 0.3, "balanced","sag", "D10L5P5LRG4A" )
+execute(root,"Dataset.csv",  "PPI", descriptors, 0.3, "balanced","saga", "D10L5P5LRG5A" )

@@ -3,18 +3,18 @@ Info,Class weight,balanced
 Info,Kernel,linear
 Info,Libraries,AFRODB BIOFACQUIM Epidatabase FDA PPI
 Info,Test fraction,20.0
-Info,Descriptors,"['LogP', 'TPSA', 'Heavy Atom', 'Ring Count', 'Fraction CSP3', 'MW', 'RB', 'HBA', 'HBD']"
-Results,coef,"[0.081, 0.048, 0.021, 0.021, 0.021, 0.02, -0.268, -1.027, -1.219]"
-Results,N support,7407 742
-Results,Intercept,-5.3228236259328705
+Info,Descriptors,"['MW', 'TPSA', 'Heavy Atom', 'Ring Count', 'Fraction CSP3', 'LogP', 'RB', 'HBD', 'HBA']"
+Results,coef,"[1.544, 1.134, 0.349, 0.349, 0.349, -0.131, -0.806, -1.387, -1.677]"
+Results,N support,8896 896
+Results,Intercept,-0.6039022344766571
 Results,fit_status,0
-Results,probA,-0.56
-Results,probB,-2.52
-Metrics,Accuracy,0.68
+Results,probA,-1.04
+Results,probB,-2.27
+Metrics,Accuracy,0.75
 Metrics,Balanced Accuracy,0.74
-Metrics,Precision,0.19
-Metrics,F1,0.31
+Metrics,Precision,0.22
+Metrics,F1,0.34
 Metrics,ROC AUC score,0.74
 Metrics,AUC,0.82
-Metrics,Confusion matrix,"[[2556 1287]
- [  72  302]]"
+Metrics,Confusion matrix,"[[2886  957]
+ [ 104  270]]"

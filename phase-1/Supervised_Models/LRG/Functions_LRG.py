@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 import sklearn
-#from sklearn.linear_model import LogisticRegression
+from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score, balanced_accuracy_score, precision_score, f1_score, roc_auc_score, auc, roc_curve, confusion_matrix
 
 def test_compound(Data,Library, Name, descriptors):
@@ -17,6 +17,7 @@ def test_compound(Data,Library, Name, descriptors):
     DF = Data[Data["Library"]== Library]
     compound = DF[DF["Name"]== Name]
     compound = compound[descriptors]
+    compound = pd.DataFrame(StandardScaler().fit_transform(compound))
     return compound
 
 def test_compound_real_category(Data, Name, target):
