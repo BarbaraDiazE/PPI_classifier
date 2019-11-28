@@ -14,7 +14,7 @@ class SVM:
     def __init__(self, root, input_file, target, descriptors, fraction):
         self.Data = pd.read_csv(str(root["root"]) + str(input_file)) 
         #Muestreo
-        self.Data = pd.DataFrame.sample(self.Data, frac=0.05, replace=True,  random_state=1992, axis=None)
+        #self.Data = pd.DataFrame.sample(self.Data, frac=0.05, replace=True,  random_state=1992, axis=None)
         ids = ['Unnamed: 0', 'ID Database', 'Name', 'SMILES', 'subLibrary', 'Library', 'Epigenetic', "PPI"]
         self.numerical_data = self.Data.drop(ids, axis = 1)
         self.fraction = fraction
