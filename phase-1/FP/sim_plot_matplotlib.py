@@ -8,7 +8,7 @@ import itertools as it
 #import random
 
 from rdkit import Chem, DataStructs
-from rdkit.Chem import AllChem, Descriptors
+from rdkit.Chem import AllChem, MACCSkeys
 
 root = {"root": "/home/barbara/Documents/DIFACQUIM/PPI_classifier/phase-1/Databases/",
         "morgan2":"/home/barbara/Documents/DIFACQUIM/PPI_classifier/phase-1/Databases/morgan2/",
@@ -40,6 +40,49 @@ def morgan2_fp(SMILES, Library):
                     "df" : df}
         return fp_result
 
+def morgan3_fp(SMILES, Library):
+        ms=[Chem.MolFromSmiles(i) for i in SMILES]
+        fps_Morgan = [AllChem.GetMorganFingerprintAsBitVect(x,3) for x in ms]
+        Morgan = [DataStructs.FingerprintSimilarity(y,x) for x,y in it.combinations(fps_Morgan,2)]
+        Morgan.sort()
+        sim = Morgan
+        #estatistical values
+        stat = {"MIN": [round(min(sim),2)],
+                "1Q": [round(np.percentile(sim, 25))],
+                "MEDIAN": [round(st.median(sim))],
+                "MEAN": [round(st.mean(sim),2)],
+                "3Q": [round(np.percentile(sim, 75),2)],
+                "MAX": [max(sim)],
+                "STD": [round(st.stdev(sim),2)],
+                "Library": [str(Library)] }
+        df = pd.DataFrame.from_dict(stat)
+        fp_result = {"sim" : sim,   
+                    "y"  : np.arange(1, len(sim) + 1)/ len(sim),
+                    "df" : df}
+        return fp_result
+def maccskeys_fp(SMILES, Library):
+        ms = list()
+        sim = list()
+        y = list()
+        ms=[Chem.MolFromSmiles(i) for i in SMILES]
+        fps_MACCKeys = [MACCSkeys.GenMACCSKeys(x) for x in ms]
+        MACCKeys = [DataStructs.FingerprintSimilarity(y,x) for x,y in it.combinations(fps_MACCKeys,2)]
+        MACCKeys.sort()
+        sim = MACCKeys
+        y= np.arange(1, len(sim) + 1)/ len(sim) #eje y#estatistical values
+        stat = {"MIN": [round(min(sim),2)],
+                "1Q": [round(np.percentile(sim, 25))],
+                "MEDIAN": [round(st.median(sim))],
+                "MEAN": [round(st.mean(sim),2)],
+                "3Q": [round(np.percentile(sim, 75),2)],
+                "MAX": [max(sim)],
+                "STD": [round(st.stdev(sim),2)],
+                "Library": [str(Library)] }
+        df = pd.DataFrame.from_dict(stat)
+        fp_result = {"sim" : sim,   
+                    "y"  : np.arange(1, len(sim) + 1)/ len(sim),
+                    "df" : df}
+        return fp_result
 
 class PlotSimPlt:
     
@@ -56,7 +99,7 @@ class PlotSimPlt:
         sim_data = dict()
         for i in range(len(Library)):
             smiles = list(self.Data[self.Data["Library"] == Library[i]].SMILES)
-            sim_data[Library[i]] = morgan2_fp(smiles, Library[i])
+            sim_data[Library[i]] = morgan3_fp(smiles, Library[i])
         return sim_data    
       
     def plot_sim(self, dict, ref_output):
@@ -72,7 +115,7 @@ class PlotSimPlt:
         plt.ylim([0.0, 1.01])
         plt.xlabel('Similarity')
         plt.ylabel('CDF')
-        plt.title(ref_output)
+        plt.title(str(ref_output))
         plt.legend(loc = "lower right", ncol=1, shadow=False, fancybox=False)
         plt.show()
 
@@ -85,5 +128,5 @@ class PlotSimPlt:
 
 a = PlotSimPlt("Dataset.csv")
 sim_data = a.storage_sim_data()
-a.plot_sim(sim_data, "ECFP4")
-a.stats(sim_data, "ECFP4")
+a.plot_sim(sim_data, "ECFP6")
+a.stats(sim_data, "ECFP6")
