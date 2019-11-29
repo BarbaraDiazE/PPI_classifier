@@ -10,8 +10,8 @@ root = {"root": "/tmpu/jlmf_g/jlmf/B/PPI_classifier/phase-1/Databases/",
 #        "root_ROC" : "/home/barbara/Documents/DIFACQUIM/PPI_classifier/phase-1/Supervised_Models/SVM/ROC"}
 
 #descriptors = ['HBA', 'HBD', 'RB', 'LogP', 'TPSA', 'MW', 'Heavy Atom', 'Ring Count', 'Fraction CSP3']
-"""ECFP4"""
-Data = pd.read_csv(str(root["root"]) + str("ECFP4_L5.csv")) 
+"""ECFP6"""
+Data = pd.read_csv(str(root["root"]) + str("ECFP6_L6.csv")) 
 ids = ['Unnamed: 0', 'ID Database', 'Name', 'SMILES', 'subLibrary', 'Library', 'Epigenetic', "PPI"]
 numerical_data = Data.drop(ids, axis = 1)
 descriptors = numerical_data.columns.to_list()
@@ -24,12 +24,12 @@ def execute(root, input_file, target, descriptors, fraction, kernel, balanced, r
     a.report(ref_output)
     print("report ", str(ref_output), "is done")
 
-execute(root, "ECFP4_L5.csv", "PPI", descriptors, 0.2, "rbf", "balanced", "D10L6P3SVM1A")
-execute(root, "ECFP4_L5.csv", "PPI", descriptors, 0.2, "linear", "balanced", "D10L6P3SVM2A")
-execute(root, "ECFP4_L5.csv", "PPI", descriptors, 0.2, "poly", "balanced", "D10L6P3SVM2A")
-execute(root, "ECFP4_L5.csv", "PPI", descriptors, 0.2, "rbf", "balanced", "D10L6P3SVM3A")
-execute(root, "ECFP4_L5.csv", "PPI", descriptors, 0.2, "sigmoid", "balanced", "D10L6P3SVM4A")
-execute(root, "ECFP4_L5.csv", "PPI", descriptors, 0.3, "linear", "balanced", "D10L6P5SVM1A")
-execute(root, "ECFP4_L5.csv", "PPI", descriptors, 0.3, "poly", "balanced", "D10L6P5SVM2A")
-execute(root, "ECFP4_L5.csv", "PPI", descriptors, 0.3, "rbf", "balanced", "D10L6P5SVM3A")
-execute(root, "ECFP4_L5.csv", "PPI", descriptors, 0.3, "sigmoid", "balanced", "D10L6P5SVM4A")
+execute(root, "ECFP6_L6.csv", "PPI", descriptors, 0.2, "rbf", "balanced", "F2L6P3SVM1A")
+execute(root, "ECFP6_L6.csv", "PPI", descriptors, 0.2, "linear", "balanced", "F2L6P3SVM2A")
+execute(root, "ECFP6_L6.csv", "PPI", descriptors, 0.2, "poly", "balanced", "F2L6P3SVM2A")
+execute(root, "ECFP6_L6.csv", "PPI", descriptors, 0.2, "rbf", "balanced", "F2L6P3SVM3A")
+execute(root, "ECFP6_L6.csv", "PPI", descriptors, 0.2, "sigmoid", "balanced", "F2L6P3SVM4A")
+execute(root, "ECFP6_L6.csv", "PPI", descriptors, 0.3, "linear", "balanced", "F2L6P5SVM1A")
+execute(root, "ECFP6_L6.csv", "PPI", descriptors, 0.3, "poly", "balanced", "F2L6P5SVM2A")
+execute(root, "ECFP6_L6.csv", "PPI", descriptors, 0.3, "rbf", "balanced", "F2L6P5SVM3A")
+execute(root, "ECFP6_L6.csv", "PPI", descriptors, 0.3, "sigmoid", "balanced", "F2L6P5SVM4A")
