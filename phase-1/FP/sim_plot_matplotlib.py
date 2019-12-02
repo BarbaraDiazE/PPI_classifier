@@ -61,9 +61,6 @@ def morgan3_fp(SMILES, Library):
                     "df" : df}
         return fp_result
 def maccskeys_fp(SMILES, Library):
-        ms = list()
-        sim = list()
-        y = list()
         ms=[Chem.MolFromSmiles(i) for i in SMILES]
         fps_MACCKeys = [MACCSkeys.GenMACCSKeys(x) for x in ms]
         MACCKeys = [DataStructs.FingerprintSimilarity(y,x) for x,y in it.combinations(fps_MACCKeys,2)]
@@ -94,12 +91,13 @@ class PlotSimPlt:
         self.Library = self.Data.Library.unique()
         print(self.Library)
 
-    def storage_sim_data(self):
+    def storage_sim_data(self, compute_fp):
         Library = self.Library
         sim_data = dict()
         for i in range(len(Library)):
             smiles = list(self.Data[self.Data["Library"] == Library[i]].SMILES)
-            sim_data[Library[i]] = morgan3_fp(smiles, Library[i])
+            #sim_data[Library[i]] = morgan3_fp(smiles, Library[i])
+            sim_data[Library[i]] = compute_fp(smiles, Library[i])
         return sim_data    
       
     def plot_sim(self, dict, ref_output):
@@ -127,6 +125,6 @@ class PlotSimPlt:
         DF.to_csv("stats_" + str(ref_output) +  ".csv", sep = "," )    
 
 a = PlotSimPlt("Dataset.csv")
-sim_data = a.storage_sim_data()
-a.plot_sim(sim_data, "ECFP6")
-a.stats(sim_data, "ECFP6")
+sim_data = a.storage_sim_data(maccskeys_fp)
+a.plot_sim(sim_data, "MACCS KEYS")
+a.stats(sim_data, "MACCS KEYS")
