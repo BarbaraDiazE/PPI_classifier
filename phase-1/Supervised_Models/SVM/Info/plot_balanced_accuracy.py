@@ -13,6 +13,7 @@ root = {"root": "/home/barbara/Documents/DIFACQUIM/PPI_classifier/phase-1/Databa
         "SVM":"/home/barbara/Documents/DIFACQUIM/PPI_classifier/phase-1/Supervised_Models/SVM"
         }
 arr = os.listdir()
+arr.remove("plot_f1.py")
 arr.remove("plot_balanced_accuracy.py")
 arr.remove( 'Coeff')
 arr.remove("plot_metrics")
@@ -57,5 +58,6 @@ def plot_sim(DF):
     plt.show()
 
 DF = storage_info(arr)
+print(DF.max())
 #print(DF)
 plot_sim(DF)
