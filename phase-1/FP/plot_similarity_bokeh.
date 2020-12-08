@@ -1,0 +1,83 @@
+""" Compute FP """
+from rdkit import Chem, DataStructs
+from rdkit.Chem import AllChem, Descriptors
+import numpy as np
+import pandas as pd
+
+from bokeh.io import  show, output_file
+from bokeh.models import ColumnDataSource, LassoSelectTool, ZoomInTool, ZoomOutTool, SaveTool, HoverTool,PanTool, Legend
+from bokeh.plotting import figure
+from bokeh.core.enums import LegendLocation
+
+from compute_fp.compute_Morgan2 import morgan2_fp
+
+root = {"root": "/home/barbara/Documents/DIFACQUIM/PPI_classifier/phase-1/Databases/",
+        "morgan2":"/home/barbara/Documents/DIFACQUIM/PPI_classifier/phase-1/Databases/morgan2/",
+        "morgan3": "/home/barbara/Documents/DIFACQUIM/PPI_classifier/phase-1/Databases/morgan3/",
+        "maccskeys":"/home/barbara/Documents/DIFACQUIM/PPI_classifier/phase-1/Databases/maccskeys/",
+        "atom": "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-1/Databases/atom"}
+
+class PlotSim:
+
+    def __init__(self, input_file):
+        Data  = pd.read_csv(str(root["root"]) + str(input_file))
+        self.Data = Data
+        self.Data = pd.DataFrame.sample(self.Data, frac=0.5, replace=True,  random_state=1992, axis=None) 
+        print(self.Data.columns)
+        print(self.Data.Library.unique())
+        
+    def column_source(self, Library, fp_func):
+        df = self.Data[self.Data["Library"] == Library]
+        sim, y, df = fp_func(df.SMILES.to_list(), Library)
+        return ColumnDataSource(dict(x=sim, y=y)), df
+    
+    def plot(self, source1, source2, source3, source4, source5):
+        hover = HoverTool(tooltips = [
+            ("Similarity","($x)"),
+            ("ECF","($y)"),
+            ])
+        p = figure(title = " ",
+                x_axis_label = "Similarity", y_axis_label="Cumulative Distribution Function",
+                x_range = (0,1), y_range = (0,1), tools=[hover], plot_width = 1000, plot_height = 800)
+        FDA = p.line(x = "x", y = "y", source = source1, line_width = 3, color=(83,99,111))
+        PPI = p.line(x = "x", y = "y", source = source2, line_width = 3,  color=(69,204,194))
+        BIOFAC = p.line(x = "x", y = "y", source = source3, line_width = 3, color=(50, 205, 50) )
+        EPI = p.line(x = "x", y = "y", source = source4, line_width = 3, color=(245,105,110))
+        AFRO = p.line(x = "x", y = "y", source = source5, line_width = 3, color=(203,78,90))
+        legend = Legend(items=[
+            ("FDA", [FDA]),
+            ("PPI", [PPI]),
+            ("BIOFACQUIM", [BIOFAC]),
+            ("EPIDATABASE", [EPI]),
+            ("AFRO", [AFRO]),
+            ], location = "center", orientation = "vertical", click_policy = "hide" )
+        p.add_tools(LassoSelectTool(), ZoomInTool(), ZoomOutTool(), SaveTool(), PanTool())
+        p.add_layout(legend, place = 'right')
+        p.xaxis.axis_label_text_font_size = "20pt"
+        p.yaxis.axis_label_text_font_size = "20pt"
+        p.xaxis.axis_label_text_color = "black"
+        p.yaxis.axis_label_text_color = "black"
+        p.xaxis.major_label_text_font_size = "18pt"
+        p.yaxis.major_label_text_font_size = "18pt"
+        p.title.text_font_size = "22pt"
+        show(p)
+    
+    def resolve(self, fp_func):
+        source1, df1 = self.column_source("FDA",  fp_func)
+        source2, df2 = self.column_source("PPI",  fp_func)
+        source3, df3 = self.column_source("BIOFACQUIM", fp_func)
+        source4,  df4 = self.column_source("Epidatabase", fp_func)
+        source5, df5 = self.column_source("AFRODB", fp_func)
+        frames = [df1, df2, df3, df4, df5]
+        #DF = pd.concat(frames, axis = 0)
+        #DF.set_index("Library")
+        #print(DF)
+        #r = str(fp_func.__name__)
+        #r = r.replace('_fp','')
+        #print(r)
+        #DF.to_csv(str(root[r]) + "_stats_" + str(r) + ".csv", sep = ","        )
+        self.plot(source1, source2, source3, source4, source5)
+
+
+a = PlotSim("Dataset.csv")
+a.resolve(morgan2_fp)

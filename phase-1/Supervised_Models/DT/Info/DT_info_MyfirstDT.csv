@@ -1,0 +1,17 @@
+Info,Method,Decision Tree 
+Info,Class weight,balanced
+Info,Max depth,7
+Info,Libraries,EPIDATABASE FDA PPI AFRODB BIOFACQUIM
+Info,Test fraction,30.0
+Info,Descriptors,HBA HBD RB LogP TPSA MW Heavy Atom Ring Count Fraction CSP3
+Results,Clases,0 1
+Results,tree_,<sklearn.tree._tree.Tree object at 0x7f727c9f74a8>
+Results,max_features_,9
+Metrics,Accuracy,0.85
+Metrics,Balanced Accuracy,0.81
+Metrics,Precision,0.29
+Metrics,F1,0.42
+Metrics,ROC AUC score,0.81
+Metrics,AUC,0.85
+Metrics,Confusion matrix,"[[1505  257]
+ [  31  105]]"

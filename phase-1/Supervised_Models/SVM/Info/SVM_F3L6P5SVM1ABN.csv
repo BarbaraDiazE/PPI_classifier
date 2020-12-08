@@ -16,5 +16,4 @@ Metrics,Precision,0.9
 Metrics,F1,0.91
 Metrics,ROC AUC score,0.9
 Metrics,AUC,0.96
-Metrics,Confusion matrix,"[[452  56]
- [ 46 528]]"
+Metrics,Confusion matrix,[[452  56][ 46 528]]
