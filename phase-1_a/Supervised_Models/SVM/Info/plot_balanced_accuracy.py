@@ -13,20 +13,10 @@ root = {
     "root": "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-1_a/Databases/",
     "SVM": "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-1_a/Supervised_Models/SVM/",
 }
-# arr = os.listdir()
-# arr.remove("plot_f1.py")
-# arr.remove("plot_balanced_accuracy.py")
-# arr.remove("Coeff")
-# arr.remove("plot_metrics")
-# arr.remove("SVM_F2L6P3SVM1A.csv")
-# arr.remove("SVM_D10L6P5SVM1A.csv")
-# arr.remove("readme.md")
-# arr.remove(".vscode")
 arr = list()
 for file in os.listdir():
     if file.endswith(".csv"):
         arr.append(file)
-# print(arr)
 DF = pd.DataFrame
 
 
