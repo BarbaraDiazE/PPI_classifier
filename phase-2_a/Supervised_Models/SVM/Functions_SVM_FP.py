@@ -130,7 +130,7 @@ def svm_report(
             ("Info", "Method"): "SVM",
             ("Info", "Class weight"): parameters["Class weight"],
             ("Info", "Kernel"): parameters["kernel"],
-            ("Info", "Libraries"): " ".join(map(str, list(Data.Library.unique()))),
+            ("Info", "Libraries"): " ".join(map(str, list(Data.library.unique()))),
             ("Info", "Test fraction"): parameters["fraction"],
             ("Info", "Descriptors"): " ".join(map(str, descriptors)),
             ("Results", "N support"): atributes["N support"],
