@@ -10,8 +10,8 @@ import itertools as it
 """Plot balanced accuracy"""
 
 root = {
-    "root": "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-1_a/Databases/",
-    "SVM": "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-1_a/Supervised_Models/SVM/",
+    "root": "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-2_a/Databases/",
+    "SVM": "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-2_a/Supervised_Models/SVM/",
 }
 arr = list()
 for file in os.listdir():

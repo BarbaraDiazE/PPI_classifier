@@ -2,7 +2,7 @@
 
 import os
 import pandas as pd
-from SVM_grid import SVM
+from Kmeans import Kmeans
 
 root = {
     "root": "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-2_a/Databases/",
@@ -26,10 +26,11 @@ print("number of descriptors: ", len(descriptors))
 def execute(
     root, input_file, target, descriptors, fraction, kernel, balanced, ref_output
 ):
-    a = SVM(root, input_file, target, descriptors, fraction)
-    a.train_model(kernel, balanced)
-    a.report(ref_output)
-    print("report ", str(ref_output), "is done")
+    a = Kmeans(root, input_file, target, descriptors, fraction)
+    a.eda()
+    a.train_model()
+    # a.report(ref_output)
+    # print("report ", str(ref_output), "is done")
 
 
 execute(
@@ -40,7 +41,7 @@ execute(
     0.2,
     "linear",
     "balanced",
-    "p2_D12L6P3SVM1A_v1",
+    "p2_D11L6P3SVM1A",
 )
 # execute(
 #     root,
