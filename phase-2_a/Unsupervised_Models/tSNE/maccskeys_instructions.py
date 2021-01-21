@@ -9,6 +9,7 @@ root = {
     "root_Info": "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-2_a/Supervised_Models/SVM/Info",
     "root_chem_space": "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-2_a/Unsupervised_Models/chemical_space",
     "tsne_results": "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-2_a/Unsupervised_Models/tSNE/tSNE_results",
+    "tsne_info_params": "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-2_a/Unsupervised_Models/tSNE/tSNE_results/info_params",
 }
 
 

@@ -38,21 +38,34 @@ class TSNE_FP:
         sns.heatmap(self.numerical_data, cmap="Set2")
         plt.show()
 
-    def train_model(self):
+    def train_model(self, ref_output):
         b_targets = self.data["PPI family"].unique()
         N = len(b_targets)
         print(N)
         model = TSNE(
-            n_components=2, init="pca", random_state=1992, angle=0.5, perplexity=30
-        ).fit_transform(self.numerical_data)
-        result = pd.DataFrame(data=model, columns=["PC 1", "PC 2"])
+            n_components=2,
+            init="pca",
+            random_state=1992,
+            angle=0.5,
+            perplexity=30,
+            n_iter=1000,
+        )
+        result = model.fit_transform(self.numerical_data)
+        print(result)
+        result = pd.DataFrame(data=result, columns=["PC 1", "PC 2"])
         result["ipp_id"] = self.data["ipp_id"]
         result["PPI family"] = self.data["PPI family"]
-        print(result.head())
+        params = model.get_params()
+        params = pd.DataFrame(
+            data=np.array([list(params.keys()), list(params.values())])
+        )
+        params.to_csv(
+            f'{self.root["tsne_info_params"]}{"/"}{"info_"}{ref_output}{".csv"}'
+        )
         return result
 
     def plot_matplotlib(self, ref_output):
-        data = self.train_model()
+        data = self.train_model(ref_output)
         data.to_csv(f'{self.root["tsne_results"]}{"/"}{ref_output}{".csv"}')
         sns.set_context("paper", font_scale=0.7)
         sns.set_style("darkgrid")
