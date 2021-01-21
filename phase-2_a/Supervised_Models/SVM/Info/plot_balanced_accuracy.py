@@ -21,39 +21,39 @@ DF = pd.DataFrame
 
 
 def storage_info(arr):
-    # ROC_info = dict()
-    print(arr)
     """storage balanced accuracy"""
     values = list()
     for i in range(len(arr)):
+        print("#####", i, arr[i], "#####")
         df = pd.read_csv(arr[i])
-        # a corresponde a la linea con el  tipo de kernel
-        a = df.iloc[[1]]["SVM"].to_list()
-        print(a)
-        if a[0] == "linear":
-            b = df.iloc[[12]]["SVM"].to_list()
-            values.append(float(b[0]))
+        a = df.loc[2][2]
+        print("kernel", a)
+        if a == "linear":
+            b = df.iloc[13][2]
+            values.append(float(b))
         else:
-            print(df.iloc[[11]])
-            b = df.iloc[[11]]["SVM"].to_list()
-            values.append(float(b[0]))
-            continue
+            b = df.iloc[12][2]
+            values.append(float(b))
+    #         continue
     DF = pd.DataFrame.from_dict({"Exp": arr, "balanced accuracy": values})
     return DF
 
 
 def plot_sim(DF):
     plt.figure(figsize=[10, 4.8], dpi=200)
-    DF.sort_values(by=["Exp"])
+    DF = DF.sort_values(by=["Exp"])
+    DF.to_csv(
+        "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-2_a/Supervised_Models/SVM/Info/info_metrics/balanced_accuracy.csv"
+    )
     X = list()
     for i in DF.Exp.to_list():
         i = i.replace(".csv", "")
-        # print("i", i)
         X.append(i.replace("SVM_", ""))
     x = [i for i in range(len(DF["balanced accuracy"]))]
     y = list(DF["balanced accuracy"])
-    plt.plot(x, y, "ro", color="blue")
+    plt.plot(x, y, "ro", color="navy")
     plt.xticks(x, X, rotation="vertical")
+    plt.tick_params(axis="x", labelsize=10)
     plt.ylabel("Balanced Accuracy")
     # plt.title(str(ref_output))
     plt.subplots_adjust(bottom=0.15)
