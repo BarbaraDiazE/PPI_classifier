@@ -41,10 +41,10 @@ def storage_info(arr):
 
 def plot_sim(DF):
     plt.figure(figsize=[10, 4.8], dpi=200)
-    DF = DF.sort_values(by=["Exp"])
     DF.to_csv(
         "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-2_a/Supervised_Models/SVM/Info/info_metrics/balanced_accuracy.csv"
     )
+    DF = DF.sort_values(by=["Exp"])
     X = list()
     for i in DF.Exp.to_list():
         i = i.replace(".csv", "")

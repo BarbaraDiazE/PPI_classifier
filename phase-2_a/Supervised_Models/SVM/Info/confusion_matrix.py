@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import statistics as st
 import itertools as it
 
-"""Plot F1"""
+"""Confusion matrix"""
 
 root = {
     "root": "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-2_a/Databases/",
@@ -28,12 +28,15 @@ def storage_info(arr):
         a = df.loc[2][2]
         # print(a, arr[i])
         if a == "linear":
-            b = df.loc[15][2]
-            values.append(float(b))
+            b = df.loc[18][2]
+            values.append(b)
         else:
-            b = df.loc[14][2]
-            values.append(float(b))
-    DF = pd.DataFrame.from_dict({"Exp": arr, "F1": values})
+            b = df.loc[17][2]
+            values.append(b)
+    DF = pd.DataFrame.from_dict({"Exp": arr, "Confusion matrix": values})
+    DF.to_csv(
+        "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-2_a/Supervised_Models/SVM/Info/info_metrics/confusion_matrix.csv"
+    )
     return DF
 
 
@@ -59,5 +62,4 @@ def plot_sim(DF):
 DF = storage_info(arr)
 # print(DF)
 print(DF.head())
-print(DF.sort_values(by=["F1"]))
-plot_sim(DF)
+# plot_sim(DF)
