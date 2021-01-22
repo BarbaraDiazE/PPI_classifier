@@ -53,10 +53,13 @@ def plot_sim(DF):
     y = list(DF["balanced accuracy"])
     plt.plot(x, y, "ro", color="navy")
     plt.xticks(x, X, rotation="vertical")
-    plt.tick_params(axis="x", labelsize=10)
+    # plt.tick_params(axis="x", labelsize=10)
     plt.ylabel("Balanced Accuracy")
-    # plt.title(str(ref_output))
-    plt.subplots_adjust(bottom=0.15)
+    plt.subplots_adjust(bottom=0.35)
+    plt.savefig(
+        "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-2_a/Supervised_Models/SVM/Info/plot_metrics/balanced_accuracy.png",
+        dpi=150,
+    )
     plt.show()
 
 

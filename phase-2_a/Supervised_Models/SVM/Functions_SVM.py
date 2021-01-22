@@ -14,6 +14,7 @@ from sklearn.metrics import (
     auc,
     roc_curve,
     confusion_matrix,
+    recall_score,
 )
 
 
@@ -125,6 +126,7 @@ def svm_report(
             ("Metrics", "ROC AUC score"): round(roc_auc_score(y_test, predictions), 2),
             ("Metrics", "AUC"): round(roc_auc, 2),
             ("Metrics", "Confusion matrix"): confusion_matrix(y_test, predictions),
+            ("Metrics", "Recall"): recall_score(y_test, predictions),
         }
     else:
         data = {
@@ -148,6 +150,7 @@ def svm_report(
             ("Metrics", "ROC AUC score"): round(roc_auc_score(y_test, predictions), 2),
             ("Metrics", "AUC"): round(roc_auc, 2),
             ("Metrics", "Confusion matrix"): confusion_matrix(y_test, predictions),
+            ("Metrics", "Recall"): recall_score(y_test, predictions),
         }
     Report = pd.Series(data)
     Report.to_csv(str(root_Info) + "/SVM_" + str(ref_output) + ".csv", sep=",")

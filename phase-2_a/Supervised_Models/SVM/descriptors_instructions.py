@@ -2,7 +2,7 @@
 
 import os
 import pandas as pd
-from SVM_grid import SVM
+from SVM import SVM
 
 root = {
     "root": "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-2_a/Databases/",

@@ -53,6 +53,10 @@ def plot_sim(DF):
     plt.xticks(x, X, rotation="vertical")
     plt.ylabel("F1")
     plt.subplots_adjust(bottom=0.35)
+    plt.savefig(
+        "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-2_a/Supervised_Models/SVM/Info/plot_metrics/f1.png",
+        dpi=150,
+    )
     plt.show()
 
 

@@ -18,3 +18,4 @@ Metrics,ROC AUC score,0.92
 Metrics,AUC,0.98
 Metrics,Confusion matrix,"[[488   5]
  [ 62 371]]"
+Metrics,Recall,0.8568129330254042
