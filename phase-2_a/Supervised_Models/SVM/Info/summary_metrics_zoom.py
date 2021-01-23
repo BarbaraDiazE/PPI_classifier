@@ -53,49 +53,63 @@ def storage_info(arr):
     )
     DF = DF.sort_values("Precision", ascending=False)
     DF = DF.reset_index(drop=True)
-    DF.to_csv(
-        "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-2_a/Supervised_Models/SVM/Info/info_metrics/summary_metrics.csv"
-    )
+    # DF.to_csv(
+    #     "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-2_a/Supervised_Models/SVM/Info/info_metrics/summary_metrics.csv"
+    # )
     print(DF.dtypes)
     return DF
 
 
 def plot(DF):
     DF = DF.set_index("Model")
+    DF = DF[DF["Precision"] > 0.84]
     print(DF.head())
     plt.figure(figsize=[8, 10])
     ax = plt.subplot()
     ################3
 
     bounds = [
-        0.50,
-        0.59,
-        0.70,
-        0.74,
-        0.76,
-        0.81,
+        # amarillo
+        0.84,
         0.85,
+        0.86,
+        # rosa
+        0.87,
+        0.88,
         0.89,
+        # morado
+        0.90,
+        0.91,
+        0.92,
+        # verde
         0.93,
+        0.94,
         0.95,
+        # azul
+        0.96,
         0.97,
-        0.98,
-        1.0,
+        0.99,
+        # 1,
     ]
     colors = [
+        # amarillos
         "yellow",
         "gold",
         "orange",
-        "peru",
+        # rosas
         "pink",
+        "hotpink",
         "deeppink",
+        # morados
         "mediumvioletred",
         "blueviolet",
-        # "indigo",
+        "indigo",
+        # verde
         "yellowgreen",
+        "limegreen",
         "forestgreen",
-        # "cyan",
-        "deepskyblue",
+        # azules
+        "cyan",
         "dodgerblue",
         "darkblue",
     ]
@@ -114,8 +128,8 @@ def plot(DF):
         linewidth=1,
         # annot=True,
         linecolor="ivory",
-        vmin=0.50,
-        vmax=1.0,
+        vmin=0.85,
+        vmax=0.999,
         cbar_kws={"shrink": 0.8},
     )
     ax.tick_params(axis="both", labelsize=8)
@@ -130,7 +144,7 @@ def plot(DF):
     plt.tight_layout(h_pad=0.9)
 
     plt.savefig(
-        "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-2_a/Supervised_Models/SVM/Info/plot_metrics/headmap_summary.png",
+        "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-2_a/Supervised_Models/SVM/Info/plot_metrics/headmap_summary_zoom.png",
         dpi=200,
     )
     plt.show()
