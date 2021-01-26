@@ -37,6 +37,15 @@ def storage_info(arr):
     DF.to_csv(
         "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-2_a/Supervised_Models/SVM/Info/info_metrics/confusion_matrix.csv"
     )
+    m = [
+        "SVM_p2_F2L6P3SVM2ABN.csv",
+        "SVM_p2_F1L6P3SVM2ABN.csv",
+        "SVM_p2_F1L6P5SVM2ABN.csv",
+        "SVM_p2_F2L6P3SVM3ABN.csv",
+        "SVM_p2_F2L6P5SVM2ABN.csv",
+    ]
+    for i in m:
+        print(DF[DF["Exp"] == i])
     return DF
 
 
@@ -61,5 +70,4 @@ def plot_sim(DF):
 
 DF = storage_info(arr)
 # print(DF)
-print(DF.head())
-# plot_sim(DF)
+# print(DF.head())

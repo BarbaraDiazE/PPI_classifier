@@ -26,11 +26,11 @@ print("number of descriptors: ", len(descriptors))
 
 def execute(root, input_file, target, descriptors, ref_output):
     a = TSNE_FP(root, input_file, target, descriptors)
-    a.eda()
+    # a.eda()
     a.plot_matplotlib(ref_output)
     print("results ", str(ref_output), "are saved")
 
 
 execute(
-    root, "dataset_maccskeys_p2.csv", "PPI", descriptors, "p2_tsne_p30a5",
+    root, "maccskeys_tsne.csv", "PPI", descriptors, "p2_maccskeys_tsne_p30a5",
 )

@@ -14,9 +14,11 @@ class TSNE_FP:
         self.data = pd.read_csv(
             str(root["root"]) + str(input_file), low_memory=True, index_col="Unnamed: 0"
         )
-        self.data = self.data[self.data.library == "PPI"]
+        # self.data = self.data[self.data.library == "PPI"]
         print(self.data.head())
         print("Libraries are: ", self.data.library.unique())
+        print("PPI family: ", self.data["PPI family"].unique())
+        print("Number of PPI family: ", len(self.data["PPI family"].unique()))
         print("Total compounds: ", self.data.shape[0])
         self.descriptors = descriptors
         self.target = target
@@ -70,7 +72,35 @@ class TSNE_FP:
         sns.set_context("paper", font_scale=0.7)
         sns.set_style("darkgrid")
         plt.figure(figsize=(10, 6))
-        sns.scatterplot("PC 1", "PC 2", data=data, hue="PPI family", palette="Set2")
+        # p = sns.color_palette("husl", 18)
+        colors = [
+            # amarillos
+            # "yellow",
+            "gold",
+            "orange",
+            # rosas
+            "pink",
+            "hotpink",
+            "deeppink",
+            # morados
+            "mediumvioletred",
+            # "blueviolet",
+            "indigo",
+            # verde
+            "yellowgreen",
+            "limegreen",
+            "forestgreen",
+            # azules
+            "cyan",
+            "dodgerblue",
+            "darkblue",
+            # gris
+            # "gray",
+            # "darkgray",
+            # "teal",
+        ]
+
+        sns.scatterplot("PC 1", "PC 2", data=data, hue="PPI family", palette=colors)
         plt.legend(bbox_to_anchor=(1.01, 1), borderaxespad=0)
         plt.title("chemical space PPI modulators")
         plt.tight_layout()
