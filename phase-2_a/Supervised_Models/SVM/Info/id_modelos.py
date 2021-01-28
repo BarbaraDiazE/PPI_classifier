@@ -14,9 +14,6 @@ def remove_csv(s):
     return s.replace(".csv", "")
 
 
-model_names = list(map(remove_csv, csv_files))
-
-
 def population(string):
     if ["P3"] == re.findall("P3", string):
         p = "80/20"
@@ -29,8 +26,7 @@ def population(string):
 
 def libraries(string):
     "identify libraries"
-    x = re.findall("L6", string)
-    if x[0] == "L6":
+    if ["L6"] == re.findall("L6", string):
         l = "PPI and FDA"
     else:
         l = "Libraries not known"
@@ -54,9 +50,9 @@ def kernel(string):
 
 def class_weight(string):
     if ["ABN"] == re.findall("ABN", string):
-        c = "True"
-    else:
         c = "False"
+    else:
+        c = "True"
     return c
 
 
@@ -64,13 +60,14 @@ def class_weight(string):
 dict1 = dict()
 print(dict1)
 # populate the dictionary with model information
-for i in range(len(model_names)):
-    dict1["model name"] = model_names
-    dict1["Data"] = list(map(population, model_names))
-    dict1["Libraries"] = list(map(libraries, model_names))
-    dict1["Algorithm"] = ["SVM" for i in range(len(model_names))]
-    dict1["Kernel"] = list(map(kernel, model_names))
-    dict1["class_weight"] = list(map(class_weight, model_names))
+model_names = list(map(remove_csv, csv_files))
+dict1["id_model"] = ["ID" + str(num + 1) for num in range(len(model_names))]
+dict1["model name"] = model_names
+dict1["Data"] = list(map(population, model_names))
+dict1["Libraries"] = list(map(libraries, model_names))
+dict1["Algorithm"] = ["SVM" for i in range(len(model_names))]
+dict1["Kernel"] = list(map(kernel, model_names))
+dict1["class_weight"] = list(map(class_weight, model_names))
 
 # iter throught a dictionary
 # for i in range(len(model_names)):
@@ -90,5 +87,8 @@ DF = pd.DataFrame.from_dict(
     data=dict1,
     # orient=index,
     # columns=["model name", "Data", "Libraries", "Algorithm", "Kernel", "class_weight"],
+)
+DF.to_csv(
+    "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-2_a/Supervised_Models/SVM/p2_id_models.csv"
 )
 print(DF.head())
