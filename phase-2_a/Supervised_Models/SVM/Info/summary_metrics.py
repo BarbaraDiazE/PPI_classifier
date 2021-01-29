@@ -9,7 +9,10 @@ import seaborn as sns
 import statistics as st
 import itertools as it
 
-"""Recall"""
+"""Summary metrics
+    get the id of the model
+    get performence metrics and plot results in a headmap
+"""
 
 root = {
     "root": "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-2_a/Databases/",
@@ -21,15 +24,33 @@ for file in os.listdir():
         arr.append(file)
 DF = pd.DataFrame
 
+# read id models csv
+id_dataframe = pd.read_csv(f'{root["SVM"]}{"p2_id_models.csv"}', index_col="Unnamed: 0")
+print(id_dataframe.head())
+
+
+def find_model_id(model_name):
+    "find the model id acording to model name"
+    model_name = model_name.replace(".csv", "")
+    _ = id_dataframe.loc[id_dataframe["model name"] == model_name, "id_model"]
+    id_model = _.iloc[0]
+    if len(id_model) == 3:
+        label = id_model + "  "
+    else:
+        label = id_model
+    return label
+
 
 def storage_info(arr):
-    """storage recall"""
+    """storage metrics"""
+    id_models = list()
     balanced_accuracy = list()
     precision = list()
     f1 = list()
     recall = list()
     for i in range(len(arr)):
         print(arr[i])
+        id_models.append(find_model_id(arr[i]))  # storage id model
         df = pd.read_csv(arr[i])
         a = df.loc[2][2]
         if a == "linear":
@@ -44,15 +65,18 @@ def storage_info(arr):
             recall.append(round(float(df.loc[18][2]), 2))
     DF = pd.DataFrame.from_dict(
         {
-            "Model": arr,
+            "id_model": id_models,
+            "Model name": arr,
             "Precision": precision,
             "Balanced accuracy": balanced_accuracy,
             "F1": f1,
             "Recall": recall,
         }
     )
+    print(DF.head())
     DF = DF.sort_values("Precision", ascending=False)
     DF = DF.reset_index(drop=True)
+    print(DF.head())
     DF.to_csv(
         "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-2_a/Supervised_Models/SVM/Info/info_metrics/summary_metrics.csv"
     )
@@ -61,7 +85,8 @@ def storage_info(arr):
 
 
 def plot(DF):
-    DF = DF.set_index("Model")
+    DF = DF.set_index("id_model")
+    DF = DF.drop("Model name", axis=1)
     print(DF.head())
     plt.figure(figsize=[8, 10])
     ax = plt.subplot()
@@ -112,7 +137,7 @@ def plot(DF):
         data=DF,
         cmap=cmap,
         linewidth=1,
-        # annot=True,
+        annot=True,
         linecolor="ivory",
         vmin=0.50,
         vmax=1.0,
@@ -130,7 +155,7 @@ def plot(DF):
     plt.tight_layout(h_pad=0.9)
 
     plt.savefig(
-        "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-2_a/Supervised_Models/SVM/Info/plot_metrics/headmap_summary.png",
+        "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-2_a/Supervised_Models/SVM/Info/plot_metrics/headmap_annot_summary.png",
         dpi=200,
     )
     plt.show()
