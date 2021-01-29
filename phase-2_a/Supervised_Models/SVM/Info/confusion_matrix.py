@@ -19,11 +19,29 @@ for file in os.listdir():
         arr.append(file)
 DF = pd.DataFrame
 
+# read id models csv
+id_dataframe = pd.read_csv(f'{root["SVM"]}{"p2_id_models.csv"}', index_col="Unnamed: 0")
+print(id_dataframe.head())
+
+
+def find_model_id(model_name):
+    "find the model id acording to model name"
+    model_name = model_name.replace(".csv", "")
+    _ = id_dataframe.loc[id_dataframe["model name"] == model_name, "id_model"]
+    id_model = _.iloc[0]
+    if len(id_model) == 3:
+        label = id_model + "  "
+    else:
+        label = id_model
+    return label
+
 
 def storage_info(arr):
-    """storage balanced accuracy"""
+    """storage confusion matric info"""
+    id_models = list()
     values = list()
     for i in range(len(arr)):
+        id_models.append(find_model_id(arr[i]))  # storage id model
         df = pd.read_csv(arr[i])
         a = df.loc[2][2]
         # print(a, arr[i])
@@ -33,7 +51,9 @@ def storage_info(arr):
         else:
             b = df.loc[17][2]
             values.append(b)
-    DF = pd.DataFrame.from_dict({"Exp": arr, "Confusion matrix": values})
+    DF = pd.DataFrame.from_dict(
+        {"id_model": id_models, "Exp": arr, "Confusion matrix": values}
+    )
     DF.to_csv(
         "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-2_a/Supervised_Models/SVM/Info/info_metrics/confusion_matrix.csv"
     )
@@ -47,25 +67,6 @@ def storage_info(arr):
     for i in m:
         print(DF[DF["Exp"] == i])
     return DF
-
-
-def plot_sim(DF):
-    plt.figure(figsize=[10, 4.8], dpi=200)
-    DF.to_csv(
-        "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-2_a/Supervised_Models/SVM/Info/info_metrics/f1.csv"
-    )
-    DF.sort_values(by=["Exp"])
-    X = list()
-    for i in DF.Exp.to_list():
-        i = i.replace(".csv", "")
-        X.append(i.replace("SVM_", ""))
-    x = [i for i in range(len(DF["F1"]))]
-    y = list(DF["F1"])
-    plt.plot(x, y, "ro", color="crimson")
-    plt.xticks(x, X, rotation="vertical")
-    plt.ylabel("F1")
-    plt.subplots_adjust(bottom=0.35)
-    plt.show()
 
 
 DF = storage_info(arr)
