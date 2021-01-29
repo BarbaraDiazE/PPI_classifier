@@ -69,10 +69,9 @@ class TSNE_FP:
     def plot_matplotlib(self, ref_output):
         data = self.train_model(ref_output)
         data.to_csv(f'{self.root["tsne_results"]}{"/"}{ref_output}{".csv"}')
-        sns.set_context("paper", font_scale=0.7)
+        sns.set_context("paper", font_scale=0.6)
         sns.set_style("darkgrid")
         plt.figure(figsize=(10, 6))
-        # p = sns.color_palette("husl", 18)
         colors = [
             # amarillos
             # "yellow",
@@ -101,11 +100,16 @@ class TSNE_FP:
         ]
 
         sns.scatterplot("PC 1", "PC 2", data=data, hue="PPI family", palette=colors)
-        plt.legend(bbox_to_anchor=(1.01, 1), borderaxespad=0)
-        plt.title("chemical space PPI modulators")
+        plt.legend(
+            loc="upper center", bbox_to_anchor=(0.5, -0.08), ncol=7, prop={"size": 8}
+        )
+        plt.tick_params(axis="both", labelsize=10)
+        plt.xlabel("PC 1", fontsize=12)
+        plt.ylabel("PC 2", fontsize=12)
+        # plt.title("chemical space PPI modulators")
         plt.tight_layout()
         plt.savefig(
-            f'{self.root["root_chem_space"]}{"/"}{ref_output} {".png"}', dpi=150
+            f'{self.root["root_chem_space"]}{"/"}{ref_output} {".png"}', dpi=200
         )
         plt.show()
 
