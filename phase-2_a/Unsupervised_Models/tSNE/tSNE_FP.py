@@ -10,7 +10,9 @@ from sklearn.externals import joblib
 
 
 class TSNE_FP:
-    def __init__(self, root, input_file, target, descriptors):
+    def __init__(
+        self, root, input_file, target, descriptors, perplexity, n_iter, random
+    ):
         self.data = pd.read_csv(
             str(root["root"]) + str(input_file), low_memory=True, index_col="Unnamed: 0"
         )
@@ -23,6 +25,9 @@ class TSNE_FP:
         self.descriptors = descriptors
         self.target = target
         self.root = root
+        self.perplexity = perplexity
+        self.n_iter = n_iter
+        self.random = random
         ids = [
             "ipp_id",
             "chembl_id",
@@ -45,12 +50,12 @@ class TSNE_FP:
         N = len(b_targets)
         print(N)
         model = TSNE(
+            n_jobs=4,
             n_components=2,
             init="pca",
-            random_state=1992,
-            angle=0.5,
-            perplexity=30,
-            n_iter=1000,
+            perplexity=self.perplexity,
+            n_iter=self.n_iter,
+            random_state=self.random,
         )
         result = model.fit_transform(self.numerical_data)
         print(result)
@@ -64,39 +69,36 @@ class TSNE_FP:
         params.to_csv(
             f'{self.root["tsne_info_params"]}{"/"}{"info_"}{ref_output}{".csv"}'
         )
+
         return result
 
     def plot_matplotlib(self, ref_output):
         data = self.train_model(ref_output)
         data.to_csv(f'{self.root["tsne_results"]}{"/"}{ref_output}{".csv"}')
         sns.set_context("paper", font_scale=0.6)
-        sns.set_style("darkgrid")
-        plt.figure(figsize=(10, 6))
+        sns.set_style("white")
+        plt.figure(figsize=(12, 8))
         colors = [
             # amarillos
-            # "yellow",
             "gold",
-            "orange",
+            "darkorange",
             # rosas
-            "pink",
             "hotpink",
             "deeppink",
             # morados
-            "mediumvioletred",
-            # "blueviolet",
-            "indigo",
+            "blueviolet",
+            "darkmagenta",
             # verde
             "yellowgreen",
-            "limegreen",
             "forestgreen",
             # azules
-            "cyan",
-            "dodgerblue",
-            "darkblue",
+            "deepskyblue",
+            "mediumblue",
+            # verdeazul
+            "mediumturquoise",
+            "teal",
             # gris
-            # "gray",
-            # "darkgray",
-            # "teal",
+            "dimgray",
         ]
 
         sns.scatterplot("PC 1", "PC 2", data=data, hue="PPI family", palette=colors)

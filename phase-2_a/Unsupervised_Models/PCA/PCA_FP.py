@@ -77,15 +77,15 @@ class PCA_FP:
         data = self.train_model(ref_output)
         data.to_csv(f'{self.root["pca_results"]}{"/"}{ref_output}{".csv"}')
         sns.set_context("paper", font_scale=0.6)
-        sns.set_style("darkgrid")
+        sns.set_style("white")
         plt.figure(figsize=(10, 6))
         colors = [
             # amarillos
-            # "yellow",
-            "gold",
+            "yellow",
+            # "gold",
             "orange",
             # rosas
-            "pink",
+            # "pink",
             "hotpink",
             "deeppink",
             # morados

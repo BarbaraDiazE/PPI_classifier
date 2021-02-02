@@ -24,13 +24,112 @@ descriptors = numerical_data.columns.to_list()
 print("number of descriptors: ", len(descriptors))
 
 
-def execute(root, input_file, target, descriptors, ref_output):
-    a = TSNE_FP(root, input_file, target, descriptors)
+def execute(
+    root, input_file, target, descriptors, ref_output, perplexity, n_iter, random
+):
+    a = TSNE_FP(root, input_file, target, descriptors, perplexity, n_iter, random)
     # a.eda()
     a.plot_matplotlib(ref_output)
     print("results ", str(ref_output), "are saved")
 
 
 execute(
-    root, "maccskeys_tsne.csv", "PPI", descriptors, "p2_maccskeys_tsne_p30a5",
+    root,
+    "maccskeys_tsne.csv",
+    "PPI",
+    descriptors,
+    "p2_maccskeys_tsne_p10_n1000_r1992",
+    10,
+    1000,
+    1992,
+)
+execute(
+    root,
+    "maccskeys_tsne.csv",
+    "PPI",
+    descriptors,
+    "p2_maccskeys_tsne_p10_n1500_r1992",
+    10,
+    1500,
+    1992,
+)
+execute(
+    root,
+    "maccskeys_tsne.csv",
+    "PPI",
+    descriptors,
+    "p2_maccskeys_tsne_p10_n2000_r1992",
+    10,
+    2000,
+    1992,
+)
+execute(
+    root,
+    "maccskeys_tsne.csv",
+    "PPI",
+    descriptors,
+    "p2_maccskeys_tsne_p30_n1000_r1992",
+    30,
+    1000,
+    1992,
+)
+execute(
+    root,
+    "maccskeys_tsne.csv",
+    "PPI",
+    descriptors,
+    "p2_maccskeys_tsne_p30_n1500_r1992",
+    30,
+    1500,
+    1992,
+)
+execute(
+    root,
+    "maccskeys_tsne.csv",
+    "PPI",
+    descriptors,
+    "p2_maccskeys_tsne_p30_n2000_r1992",
+    30,
+    2000,
+    1992,
+)
+execute(
+    root,
+    "maccskeys_tsne.csv",
+    "PPI",
+    descriptors,
+    "p2_maccskeys_tsne_p50_n1000_r1992",
+    50,
+    1000,
+    1992,
+)
+execute(
+    root,
+    "maccskeys_tsne.csv",
+    "PPI",
+    descriptors,
+    "p2_maccskeys_tsne_p50_n1000_r1992",
+    50,
+    1000,
+    1992,
+)
+execute(
+    root,
+    "maccskeys_tsne.csv",
+    "PPI",
+    descriptors,
+    "p2_maccskeys_tsne_p50_n1500_r1992",
+    50,
+    1500,
+    1992,
+)
+execute(
+    root,
+    "maccskeys_tsne.csv",
+    "PPI",
+    descriptors,
+    "p2_maccskeys_tsne_p50_n2000_r1992",
+    50,
+    2000,
+    1992,
 )
