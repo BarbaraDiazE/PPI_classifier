@@ -27,7 +27,7 @@ print("number of descriptors: ", len(descriptors))
 def execute(
     root, input_file, target, descriptors, ref_output, perplexity, n_iter, random
 ):
-    a = TSNE_FP(root, input_file, target, descriptors)
+    a = TSNE_FP(root, input_file, target, descriptors, perplexity, n_iter, random)
     # a.eda()
     a.plot_matplotlib(ref_output)
     print("results ", str(ref_output), "are saved")
