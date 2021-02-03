@@ -78,32 +78,28 @@ class PCA_FP:
         data.to_csv(f'{self.root["pca_results"]}{"/"}{ref_output}{".csv"}')
         sns.set_context("paper", font_scale=0.6)
         sns.set_style("white")
-        plt.figure(figsize=(10, 6))
+        plt.figure(figsize=(12, 8))
         colors = [
             # amarillos
-            "yellow",
-            # "gold",
-            "orange",
+            "gold",
+            "darkorange",
             # rosas
-            # "pink",
             "hotpink",
             "deeppink",
             # morados
-            "mediumvioletred",
-            # "blueviolet",
-            "indigo",
+            "blueviolet",
+            "darkmagenta",
             # verde
             "yellowgreen",
-            "limegreen",
             "forestgreen",
             # azules
-            "cyan",
-            "dodgerblue",
-            "darkblue",
+            "deepskyblue",
+            "mediumblue",
+            # verdeazul
+            "mediumturquoise",
+            "teal",
             # gris
-            # "gray",
-            # "darkgray",
-            # "teal",
+            "dimgray",
         ]
 
         sns.scatterplot("PC 1", "PC 2", data=data, hue="PPI family", palette=colors)
