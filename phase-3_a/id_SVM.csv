@@ -1,0 +1,11 @@
+,,class_weight ,ID
+kernel ,linear,balanced,SVM1A
+kernel ,linear,None,SVM1B
+kernel ,poly,balanced,SVM2A
+kernel ,poly,None,SVM2B
+kernel ,rbf,balanced,SVM3A
+kernel ,rbf,None,SVM3B
+kernel ,sigmoid,balanced,SVM4A
+kernel ,sigmoid,None,SVM4B
+kernel ,precomputed,balanced,SVM5A
+kernel ,precomputed,None,SVM5B
