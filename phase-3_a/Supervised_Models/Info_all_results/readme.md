@@ -1,0 +1,1 @@
+Folder to storage reports from SVM algoritms

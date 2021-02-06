@@ -55,18 +55,6 @@ class Exploratory_Analysis:
         plt.savefig("boxplot_feature.png")
 
 
-# features = [
-#     "HBA",
-#     "HBD",
-#     "RB",
-#     "LogP",
-#     "TPSA",
-#     "MW",
-#     "Heavy Atom",
-#     "Ring Count",
-#     "Fraction CSP3",
-# ]
-
 a = Exploratory_Analysis("dataset_descriptors_p2.csv", "FDA",)
 a.stats()
 a.correlation()

@@ -5,10 +5,10 @@ import pandas as pd
 from SVM_grid import SVM
 
 root = {
-    "root": "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-2_a/Databases/",
-    "root_Info": "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-2_a/Supervised_Models/SVM/Info",
-    "root_ROC": "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-2_a/Supervised_Models/SVM/ROC",
-    "trained_models": "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-2_a/trained_models",
+    "root": "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-3_a/Databases/",
+    "root_Info": "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-3_a/Supervised_Models/SVM/Info",
+    "root_ROC": "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-3_a/Supervised_Models/SVM/ROC",
+    "trained_models": "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-3_a/trained_models",
 }
 
 

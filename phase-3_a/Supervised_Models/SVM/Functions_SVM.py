@@ -59,7 +59,7 @@ def plot_roc(ref_output, y_test, y_score, root_ROC):
     plt.ylabel("True Positive Rate")
     plt.title("ROC curve")
     plt.legend(loc="lower right")
-    plt.savefig(str(root_ROC) + "/roc" + str(ref_output) + ".png")
+    plt.savefig(str(root_ROC) + "/LRG_ROC_" + str(ref_output) + ".png")
     plt.show()
 
     return roc_auc

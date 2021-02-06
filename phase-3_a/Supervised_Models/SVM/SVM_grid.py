@@ -41,8 +41,8 @@ class SVM:
         param_grid = {
             # "C": [0.1, 1, 10, 100, 1000],
             # "gamma": [1, 0.1, 0.01, 0.001, 0.0001],
-            "C": [0.1, 100],
-            "gamma": [1, 0.001],
+            "C": [0.1, 10],
+            "gamma": [1, 0.01],
             "kernel": [kernel],
         }
 
@@ -56,7 +56,7 @@ class SVM:
         print(numerical_data.head())
         # numerical_data = numerical_data[numerical_data.columns[0:10]].round(3)
         numerical_data = numerical_data.fillna(numerical_data.mean())
-        numerical_data.to_csv("borrar.csv")
+        numerical_data.to_csv("numerical_data_for_grid.csv")
         print(numerical_data.head())
         X_train, X_test, y_train, y_test = train_test_split(
             numerical_data, y, test_size=self.fraction, random_state=1992
