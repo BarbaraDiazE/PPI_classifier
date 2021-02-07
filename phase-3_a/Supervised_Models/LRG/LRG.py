@@ -6,6 +6,7 @@ import os
 from sklearn.preprocessing import label_binarize, StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
+from sklearn.externals import joblib
 
 from Functions_LRG import (
     test_compound,
@@ -95,4 +96,12 @@ class LRG:
             roc_auc,
             self.root["root_Info"],
         )
-        print("report ", str(ref_output), "is Done")
+        # print("report ", str(ref_output), "is Done")
+        # save model
+        output = ref_output.replace(".csv", "")
+
+        # Save the model as a pickle in a file
+        joblib.dump(
+            self.model, f'{self.root["trained_models"]}{"/"}{"LRG_"}{output}{".pkl"}'
+        )
+

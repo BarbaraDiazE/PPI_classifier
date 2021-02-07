@@ -97,7 +97,9 @@ class SVM:
         output = ref_output
 
         # Save the model as a pickle in a file
-        joblib.dump(self.model, f'{self.root["trained_models"]}{"/"}{output}{".pkl"}')
+        joblib.dump(
+            self.model, f'{self.root["trained_models"]}{"/SVM_"}{output}{".pkl"}'
+        )
         print("model_saved")
         # roc_auc = plot_roc(
         #     ref_output,
