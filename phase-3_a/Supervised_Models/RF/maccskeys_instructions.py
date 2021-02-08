@@ -1,4 +1,4 @@
-"Instructions to train LRG from MACCSKeys representation"
+"Instructions to train Random  forest from MACCSKeys representation"
 
 import os
 import pandas as pd
