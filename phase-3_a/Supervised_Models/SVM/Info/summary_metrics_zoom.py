@@ -157,7 +157,6 @@ def plot(DF):
         cbar_kws={"shrink": 0.8},
     )
     ax.tick_params(axis="both", labelsize=8)
-
     plt.legend(bbox_to_anchor=(1.01, 1), borderaxespad=0)
     plt.xlabel("Metrics", fontsize=10)
     plt.ylabel("Trained models", fontsize=10)
@@ -168,7 +167,7 @@ def plot(DF):
     plt.tight_layout(h_pad=0.9)
 
     plt.savefig(
-        "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-2_a/Supervised_Models/SVM/Info/plot_metrics/headmap_annot_summary_zoom.png",
+        "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-3_a/Supervised_Models/SVM/Info/plot_metrics/headmap_annot_summary_zoom.png",
         dpi=200,
     )
     plt.show()
