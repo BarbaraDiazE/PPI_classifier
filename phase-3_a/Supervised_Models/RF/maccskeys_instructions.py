@@ -13,8 +13,10 @@ root = {
 
 """MACCS"""
 print(str(root["root"]))
-Data = pd.read_csv(str(root["root"]) + str("dataset_maccskeys_p2.csv"))
-ids = ["Unnamed: 0", "ipp_id", "chembl_id", "SMILES", "library", "PPI family", "PPI"]
+Data = pd.read_csv(
+    str(root["root"]) + str("dataset_maccskeys_p2.csv"), index_col="Unnamed: 0"
+)
+ids = ["ipp_id", "chembl_id", "SMILES", "library", "PPI family", "PPI"]
 numerical_data = Data.drop(ids, axis=1)
 descriptors = numerical_data.columns.to_list()
 print(len(descriptors))
@@ -38,6 +40,7 @@ def execute(
     print("report ", str(ref_output), "is done")
 
 
+# test set 0.2
 execute(
     root,
     "dataset_maccskeys_p2.csv",
@@ -48,95 +51,213 @@ execute(
     "gini",
     None,
     "balanced",
-    "p2_F3L6P3RF1A",
+    "p2_F3L6P3GRF1A",
 )
-# execute(
-#     root,
-#     "dataset_maccskeys_p2.csv",
-#     "PPI",
-#     descriptors,
-#     0.2,
-#     "lbfgs",
-#     "balanced",
-#     "p2_F3L6P3LRG2A",
-# )
-# execute(
-#     root,
-#     "dataset_maccskeys_p2.csv",
-#     "PPI",
-#     descriptors,
-#     0.2,
-#     "liblinear",
-#     "balanced",
-#     "p2_F3L6P3LRG3A",
-# )
-# execute(
-#     root,
-#     "dataset_maccskeys_p2.csv",
-#     "PPI",
-#     descriptors,
-#     0.2,
-#     "sag",
-#     "balanced",
-#     "p2_F3L6P3LRG4A",
-# )
-# execute(
-#     root,
-#     "dataset_maccskeys_p2.csv",
-#     "PPI",
-#     descriptors,
-#     0.2,
-#     "saga",
-#     "balanced",
-#     "p2_F3L6P3LRG5A",
-# )
-# execute(
-#     root,
-#     "dataset_maccskeys_p2.csv",
-#     "PPI",
-#     descriptors,
-#     0.3,
-#     "newton-cg",
-#     "balanced",
-#     "p2_F3L6P5LRG1A",
-# )
-# execute(
-#     root,
-#     "dataset_maccskeys_p2.csv",
-#     "PPI",
-#     descriptors,
-#     0.3,
-#     "lbfgs",
-#     "balanced",
-#     "p2_F3L6P5LRG2A",
-# )
-# execute(
-#     root,
-#     "dataset_maccskeys_p2.csv",
-#     "PPI",
-#     descriptors,
-#     0.3,
-#     "liblinear",
-#     "balanced",
-#     "p2_F3L6P5LRG3A",
-# )
-# execute(
-#     root,
-#     "dataset_maccskeys_p2.csv",
-#     "PPI",
-#     descriptors,
-#     0.3,
-#     "sag",
-#     "balanced",
-#     "p2_F3L6P5LRG4A",
-# )
-# execute(
-#     root,
-#     "dataset_maccskeys_p2.csv",
-#     "PPI",
-#     descriptors,
-#     0.3,
-#     "saga",
-#     "balanced",
-#     "p2_F3L6P5LRG5A",
-# )
+execute(
+    root,
+    "dataset_maccskeys_p2.csv",
+    "PPI",
+    descriptors,
+    0.2,
+    100,
+    "entropy",
+    None,
+    "balanced",
+    "p2_F3L6P3GRF1A",
+)
+execute(
+    root,
+    "dataset_maccskeys_p2.csv",
+    "PPI",
+    descriptors,
+    0.2,
+    100,
+    "gini",
+    None,
+    None,
+    "p2_F3L6P3GRF1B",
+)
+# nstimators 500
+execute(
+    root,
+    "dataset_maccskeys_p2.csv",
+    "PPI",
+    descriptors,
+    0.2,
+    500,
+    "gini",
+    None,
+    "balanced",
+    "p2_F3L6P3GRF2A",
+)
+execute(
+    root,
+    "dataset_maccskeys_p2.csv",
+    "PPI",
+    descriptors,
+    0.2,
+    500,
+    "entropy",
+    None,
+    "balanced",
+    "p2_F3L6P3ERF2A",
+)
+execute(
+    root,
+    "dataset_maccskeys_p2.csv",
+    "PPI",
+    descriptors,
+    0.2,
+    500,
+    "gini",
+    None,
+    None,
+    "p2_F3L6P3GRF2B",
+)
+# nstimators 1000
+execute(
+    root,
+    "dataset_maccskeys_p2.csv",
+    "PPI",
+    descriptors,
+    0.2,
+    1000,
+    "gini",
+    None,
+    "balanced",
+    "p2_F3L6P3GRF3A",
+)
+execute(
+    root,
+    "dataset_maccskeys_p2.csv",
+    "PPI",
+    descriptors,
+    0.2,
+    1000,
+    "entropy",
+    None,
+    "balanced",
+    "p2_F3L6P3ERF3A",
+)
+execute(
+    root,
+    "dataset_maccskeys_p2.csv",
+    "PPI",
+    descriptors,
+    0.2,
+    1000,
+    "gini",
+    None,
+    None,
+    "p2_F3L6P3GRF3B",
+)  # test set 0.3
+execute(
+    root,
+    "dataset_maccskeys_p2.csv",
+    "PPI",
+    descriptors,
+    0.3,
+    100,
+    "gini",
+    None,
+    "balanced",
+    "p2_F3L6P5GRF1A",
+)
+execute(
+    root,
+    "dataset_maccskeys_p2.csv",
+    "PPI",
+    descriptors,
+    0.3,
+    100,
+    "entropy",
+    None,
+    "balanced",
+    "p2_F3L6P5GRF1A",
+)
+execute(
+    root,
+    "dataset_maccskeys_p2.csv",
+    "PPI",
+    descriptors,
+    0.3,
+    100,
+    "gini",
+    None,
+    None,
+    "p2_F3L6P5GRF1B",
+)
+# nstimators 500
+execute(
+    root,
+    "dataset_maccskeys_p2.csv",
+    "PPI",
+    descriptors,
+    0.3,
+    500,
+    "gini",
+    None,
+    "balanced",
+    "p2_F3L6P5GRF2A",
+)
+execute(
+    root,
+    "dataset_maccskeys_p2.csv",
+    "PPI",
+    descriptors,
+    0.3,
+    500,
+    "entropy",
+    None,
+    "balanced",
+    "p2_F3L6P5ERF2A",
+)
+execute(
+    root,
+    "dataset_maccskeys_p2.csv",
+    "PPI",
+    descriptors,
+    0.3,
+    500,
+    "gini",
+    None,
+    None,
+    "p2_F3L6P5GRF2B",
+)
+# nstimators 1000
+execute(
+    root,
+    "dataset_maccskeys_p2.csv",
+    "PPI",
+    descriptors,
+    0.3,
+    1000,
+    "gini",
+    None,
+    "balanced",
+    "p2_F3L6P5GRF3A",
+)
+execute(
+    root,
+    "dataset_maccskeys_p2.csv",
+    "PPI",
+    descriptors,
+    0.3,
+    1000,
+    "entropy",
+    None,
+    "balanced",
+    "p2_F3L6P5ERF3A",
+)
+execute(
+    root,
+    "dataset_maccskeys_p2.csv",
+    "PPI",
+    descriptors,
+    0.3,
+    1000,
+    "gini",
+    None,
+    None,
+    "p2_F3L6P5GRF3B",
+)

@@ -32,8 +32,10 @@ class RF:
 
     def train_model(self, n_estimators, criterion, max_depth, class_weight):
         """
-        class_weight: dict or ‘balanced’, optional (default=None)
-        n_estimators: int, {100,300,500}.
+        n_estimators: int, {100,500,1000}.
+        criterion: str {"gini", "entropy”}
+        max_depth, int, default=None 
+        class_weight: str, {‘balanced’ or None}
         """
         y = np.array(self.Data[self.target])
         y = label_binarize(y, classes=["No", "Yes"])
@@ -44,7 +46,6 @@ class RF:
             numerical_data, y, test_size=self.fraction, random_state=1992
         )
         model = RandomForestClassifier(
-            n_estimators,
             n_estimators=n_estimators,
             criterion=criterion,
             max_depth=max_depth,
@@ -60,10 +61,12 @@ class RF:
         model.fit(X_train, y_train)
         self.atributes = {
             "classes": model.classes_,
-            # "coeff": list(model.coef_[0]),
-            # "inter": model.intercept_,
-            # "iter": model.n_iter_,
+            "base_estimator": model.base_estimator_,
+            "stimators": model.estimators_,
+            "feature_importances": model.feature_importances_,
         }
+        print("base stimator", model.base_estimator_)
+        print("stimators", model.estimators_)
         self.parameters = {
             "Method": "Linear Regression",
             "class weight": class_weight,

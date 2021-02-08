@@ -55,7 +55,6 @@ def plot_roc(ref_output, model, x, y, root_ROC):
     plt.legend(loc="lower right")
     plt.savefig(str(root_ROC) + "/RF_ROC_" + str(ref_output) + ".png")
     plt.show()
-
     return roc_auc
 
 
@@ -69,10 +68,10 @@ def rf_report(
     atributes,
     root_Info,
 ):
-    y = np.array([1, 1, 2, 2])
-    pred = np.array([0.1, 0.4, 0.35, 0.8])
-    fpr, tpr, thresholds = roc_curve(y, pred, pos_label=2)
-    print(fpr)
+    # y = np.array([1, 1, 2, 2])
+    # pred = np.array([0.1, 0.4, 0.35, 0.8])
+    # fpr, tpr, thresholds = roc_curve(y, pred, pos_label=2)
+    # print(fpr)
 
     data = {
         ("Info", "Method"): parameters["Method"],
@@ -89,9 +88,9 @@ def rf_report(
         ("Metrics", "Precision"): round(precision_score(y_test, predictions), 2),
         ("Metrics", "F1"): round(f1_score(y_test, predictions), 2),
         ("Metrics", "ROC AUC score"): round(roc_auc_score(y_test, predictions), 2),
-        ("Metrics", "AUC"): round(auc(fpr, tpr), 2),
+        # ("Metrics", "AUC"): round(auc(fpr, tpr), 2),
         ("Metrics", "Confusion matrix"): confusion_matrix(y_test, predictions),
-        ("Metrics", "recall"): recall_score(y_test, predictions),
+        ("Metrics", "recall"): round(recall_score(y_test, predictions), 2),
     }
     Report = pd.Series(data)
     Report.to_csv(str(root_Info) + "/RF_info_" + str(ref_output) + ".csv", sep=",")
