@@ -29,84 +29,165 @@ def execute(
     print("report ", str(ref_output), "is done")
 
 
-execute(
-    root,
-    "dataset_maccskeys_p2.csv",
-    "PPI",
-    descriptors,
-    0.2,
-    "linear",
-    "balanced",
-    "p2_F3L6P3SVM1A",
-)
-execute(
-    root,
-    "dataset_maccskeys_p2.csv",
-    "PPI",
-    descriptors,
-    0.2,
-    "poly",
-    "balanced",
-    "p2_F3L6P3SVM2A",
-)
-execute(
-    root,
-    "dataset_maccskeys_p2.csv",
-    "PPI",
-    descriptors,
-    0.2,
-    "rbf",
-    "balanced",
-    "p2_F3L6P3SVM3A",
-)
-execute(
-    root,
-    "dataset_maccskeys_p2.csv",
-    "PPI",
-    descriptors,
-    0.2,
-    "sigmoid",
-    "balanced",
-    "p2_F3L6P3SVM4A",
-)
-execute(
-    root,
-    "dataset_maccskeys_p2.csv",
-    "PPI",
-    descriptors,
-    0.3,
-    "linear",
-    "balanced",
-    "p2_F3L6P5SVM1A",
-)
-execute(
-    root,
-    "dataset_maccskeys_p2.csv",
-    "PPI",
-    descriptors,
-    0.3,
-    "poly",
-    "balanced",
-    "p2_F3L6P5SVM2A",
-)
-execute(
-    root,
-    "dataset_maccskeys_p2.csv",
-    "PPI",
-    descriptors,
-    0.3,
-    "rbf",
-    "balanced",
-    "p2_F3L6P5SVM3A",
-)
-execute(
-    root,
-    "dataset_maccskeys_p2.csv",
-    "PPI",
-    descriptors,
-    0.3,
-    "sigmoid",
-    "balanced",
-    "p2_F3L6P5SVM4A",
-)
+# execute(
+#     root,
+#     "dataset_maccskeys_p2.csv",
+#     "PPI",
+#     descriptors,
+#     0.2,
+#     "linear",
+#     "balanced",
+#     "p2_F3L6P3SVM1A",
+# )
+# execute(
+#     root,
+#     "dataset_maccskeys_p2.csv",
+#     "PPI",
+#     descriptors,
+#     0.2,
+#     "poly",
+#     "balanced",
+#     "p2_F3L6P3SVM2A",
+# )
+# execute(
+#     root,
+#     "dataset_maccskeys_p2.csv",
+#     "PPI",
+#     descriptors,
+#     0.2,
+#     "rbf",
+#     "balanced",
+#     "p2_F3L6P3SVM3A",
+# )
+# execute(
+#     root,
+#     "dataset_maccskeys_p2.csv",
+#     "PPI",
+#     descriptors,
+#     0.2,
+#     "sigmoid",
+#     "balanced",
+#     "p2_F3L6P3SVM4A",
+# )
+# execute(
+#     root,
+#     "dataset_maccskeys_p2.csv",
+#     "PPI",
+#     descriptors,
+#     0.3,
+#     "linear",
+#     "balanced",
+#     "p2_F3L6P5SVM1A",
+# )
+# execute(
+#     root,
+#     "dataset_maccskeys_p2.csv",
+#     "PPI",
+#     descriptors,
+#     0.3,
+#     "poly",
+#     "balanced",
+#     "p2_F3L6P5SVM2A",
+# )
+# execute(
+#     root,
+#     "dataset_maccskeys_p2.csv",
+#     "PPI",
+#     descriptors,
+#     0.3,
+#     "rbf",
+#     "balanced",
+#     "p2_F3L6P5SVM3A",
+# )
+# execute(
+#     root,
+#     "dataset_maccskeys_p2.csv",
+#     "PPI",
+#     descriptors,
+#     0.3,
+#     "sigmoid",
+#     "balanced",
+#     "p2_F3L6P5SVM4A",
+# )
 
+# Not balanced
+execute(
+    root,
+    "dataset_maccskeys_p2.csv",
+    "PPI",
+    descriptors,
+    0.2,
+    "linear",
+    None,
+    "p2_F3L6P3SVM1B",
+)
+execute(
+    root,
+    "dataset_maccskeys_p2.csv",
+    "PPI",
+    descriptors,
+    0.2,
+    "poly",
+    None,
+    "p2_F3L6P3SVM2B",
+)
+execute(
+    root,
+    "dataset_maccskeys_p2.csv",
+    "PPI",
+    descriptors,
+    0.2,
+    "rbf",
+    None,
+    "p2_F3L6P3SVM3B",
+)
+execute(
+    root,
+    "dataset_maccskeys_p2.csv",
+    "PPI",
+    descriptors,
+    0.2,
+    "sigmoid",
+    None,
+    "p2_F3L6P3SVM4B",
+)
+execute(
+    root,
+    "dataset_maccskeys_p2.csv",
+    "PPI",
+    descriptors,
+    0.3,
+    "linear",
+    None,
+    "p2_F3L6P5SVM1B",
+)
+execute(
+    root,
+    "dataset_maccskeys_p2.csv",
+    "PPI",
+    descriptors,
+    0.3,
+    "poly",
+    None,
+    "p2_F3L6P5SVM2B",
+)
+execute(
+    root,
+    "dataset_maccskeys_p2.csv",
+    "PPI",
+    descriptors,
+    0.3,
+    "rbf",
+    None,
+    "p2_F3L6P5SVM3B",
+)
+execute(
+    root,
+    "dataset_maccskeys_p2.csv",
+    "PPI",
+    descriptors,
+    0.3,
+    "sigmoid",
+    None,
+    "p2_F3L6P5SVM4B",
+)
