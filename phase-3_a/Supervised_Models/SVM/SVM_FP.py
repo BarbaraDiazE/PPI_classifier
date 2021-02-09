@@ -20,12 +20,13 @@ from Functions_SVM_FP import (
 
 class SVM:
     def __init__(self, root, input_file, target, descriptors, fraction):
-        self.Data = pd.read_csv(str(root["root"]) + str(input_file))
+        self.Data = pd.read_csv(
+            str(root["root"]) + str(input_file), index_col="Unnamed: 0"
+        )
         self.root = root
         # Muestreo
         # self.Data = pd.DataFrame.sample(self.Data, frac=0.02, replace=True,  random_state=1992, axis=None)
         ids = [
-            "Unnamed: 0",
             "ipp_id",
             "chembl_id",
             "SMILES",
@@ -105,5 +106,7 @@ class SVM:
         output = ref_output.replace(".csv", "")
 
         # Save the model as a pickle in a file
-        joblib.dump(self.model, f'{self.root["trained_models"]}{"/"}{output}{".pkl"}')
+        joblib.dump(
+            self.model, f'{self.root["trained_models"]}{"/SVM_"}{output}{".pkl"}'
+        )
 
