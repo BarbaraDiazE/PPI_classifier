@@ -61,12 +61,13 @@ dict1 = dict()
 print(dict1)
 # populate the dictionary with model information
 model_names = list(map(remove_csv, csv_files))
+print(model_names.sort())
 dict1["id_model"] = ["ID" + str(num + 1) for num in range(len(model_names))]
 dict1["model name"] = model_names
 dict1["Data"] = list(map(population, model_names))
 dict1["Libraries"] = list(map(libraries, model_names))
 dict1["Algorithm"] = ["SVM" for i in range(len(model_names))]
-dict1["Kernel"] = list(map(kernel, model_names))
+# dict1["Kernel"] = list(map(kernel, model_names))
 dict1["class_weight"] = list(map(class_weight, model_names))
 
 # iter throught a dictionary
@@ -88,7 +89,7 @@ DF = pd.DataFrame.from_dict(
     # orient=index,
     # columns=["model name", "Data", "Libraries", "Algorithm", "Kernel", "class_weight"],
 )
-# DF.to_csv(
-#     "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-3_a/Supervised_Models/Info_all_results/info_metrics/p3_id_models.csv"
-# )
+DF.to_csv(
+    "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-3_a/Supervised_Models/Info_all_results/info_metrics/p3_id_models.csv"
+)
 print(DF.head())
