@@ -48,6 +48,23 @@ def kernel(string):
     return id_kernel
 
 
+def get_descriptor(string):
+    "identify desscriptor to train the model"
+    if ["F1"] == re.findall("F1", string):
+        descriptor = "ECFP4"
+    elif ["F2"] == re.findall("F2", string):
+        descriptor = "ECFP6"
+    elif ["F3"] == re.findall("F3", string):
+        descriptor = "MACCS Keys"
+    elif ["F4"] == re.findall("F4", string):
+        descriptor = "AtomPairs"
+    elif ["D12"] == re.findall("D12", string):
+        descriptor = "Physicochemical descriptors"
+    else:
+        descriptor = "No descriptor information"
+    return descriptor
+
+
 def solver(string):
     "identify employed kernel to train the model"
     if ["LRG1"] == re.findall("LRG1", string):
@@ -67,45 +84,30 @@ def solver(string):
 
 def class_weight(string):
     if ["A.csv"] == re.findall("A.csv", string):
+        c = "True"
+    elif ["B.csv"] == re.findall("B.csv", string):
         c = "False"
     else:
-        c = "True"
+        c = "No information"
     return c
 
 
 # define empty dictionary
 dict1 = dict()
-print(dict1)
 # populate the dictionary with model information
 model_names = list(map(remove_csv, csv_files))
-print(model_names.sort())
-dict1["id_model"] = ["ID" + str(num + 1) for num in range(len(model_names))]
-dict1["model name"] = model_names
+model_names.sort()
+dict1["ID model"] = ["LRG" + str(num + 1) for num in range(len(model_names))]
+dict1["Model name"] = model_names
+dict1["Representations"] = list(map(get_descriptor, model_names))
 dict1["Data"] = list(map(population, model_names))
 dict1["Libraries"] = list(map(libraries, model_names))
 dict1["Algorithm"] = ["LRG" for i in range(len(model_names))]
 dict1["Solver"] = list(map(solver, model_names))
-dict1["class_weight"] = list(map(class_weight, model_names))
+dict1["Class weight"] = list(map(class_weight, model_names))
 
-# iter throught a dictionary
-# for i in range(len(model_names)):
-# dict1[i] = {
-#     "model name": model_names[i],
-#     "Data": population(model_names[i]),
-#     "Libraries": libraries(model_names[i]),
-#     "Algorithm": "SVM",
-#     "Kernel": kernel(model_names[i]),
-#     "class_weight": class_weight(model_names[i]),
-# }
 
-# for i in range(len(model_names)):
-#     print(dict1[i])
-
-DF = pd.DataFrame.from_dict(
-    data=dict1,
-    # orient=index,
-    # columns=["model name", "Data", "Libraries", "Algorithm", "Kernel", "class_weight"],
-)
+DF = pd.DataFrame.from_dict(data=dict1,)
 DF.to_csv(
     "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-3_a/Supervised_Models/Info_all_results/info_metrics/LRG_id_models.csv"
 )

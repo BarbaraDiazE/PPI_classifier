@@ -2,7 +2,7 @@ import os
 import re
 import pandas as pd
 
-"create a dictionary to generate and storage model information"
+"create a dictionary to generate and storage RF model information"
 # define dunctions
 csv_files = list()
 for file in os.listdir():
@@ -33,63 +33,64 @@ def libraries(string):
     return l
 
 
-def kernel(string):
+def stimators(string):
     "identify employed kernel to train the model"
-    if ["SVM1"] == re.findall("SVM1", string):
-        id_kernel = "linear"
-    elif ["SVM2"] == re.findall("SVM2", string):
-        id_kernel = "poly"
-    elif ["SVM3"] == re.findall("SVM3", string):
-        id_kernel = "rbf"
-    elif ["SVM4"] == re.findall("SVM4", string):
-        id_kernel = "sigmoid"
+    if ["RF1"] == re.findall("RF1", string):
+        n_stimators = "100"
+    elif ["RF2"] == re.findall("RF2", string):
+        n_stimators = "500"
+    elif ["RF3"] == re.findall("RF3", string):
+        n_stimators = "1000"
+
     else:
-        id_kernel = "No kernel information"
-    return id_kernel
+        n_stimators = "No n stimator information"
+    return n_stimators
+
+
+def get_descriptor(string):
+    "identify desscriptor to train the model"
+    if ["F1L"] == re.findall("F1L", string):
+        descriptor = "ECFP4"
+    elif ["F2L"] == re.findall("F2L", string):
+        descriptor = "ECFP6"
+    elif ["F3L"] == re.findall("F3L", string):
+        descriptor = "MACCS Keys"
+    elif ["F4L"] == re.findall("F4L", string):
+        descriptor = "AtomPairs"
+    elif ["D12"] == re.findall("D12", string):
+        descriptor = "Physicochemical descriptors"
+    else:
+        descriptor = "No descriptor information"
+    return descriptor
 
 
 def class_weight(string):
-    if ["A.csv"] == re.findall("A.csv", string):
+    if ["A"] == re.findall("A", string):
+        c = "True"
+    elif ["B"] == re.findall("B", string):
         c = "False"
     else:
-        c = "True"
+        c = "No information"
     return c
 
 
 # define empty dictionary
 dict1 = dict()
-print(dict1)
 # populate the dictionary with model information
 model_names = list(map(remove_csv, csv_files))
-print(model_names.sort())
-dict1["id_model"] = ["ID" + str(num + 1) for num in range(len(model_names))]
-dict1["model name"] = model_names
+model_names.sort()
+dict1["ID model"] = ["RF" + str(num + 1) for num in range(len(model_names))]
+dict1["Model name"] = model_names
+dict1["Representations"] = list(map(get_descriptor, model_names))
 dict1["Data"] = list(map(population, model_names))
 dict1["Libraries"] = list(map(libraries, model_names))
-dict1["Algorithm"] = ["SVM" for i in range(len(model_names))]
-# dict1["Kernel"] = list(map(kernel, model_names))
-dict1["class_weight"] = list(map(class_weight, model_names))
+dict1["Algorithm"] = ["RF" for i in range(len(model_names))]
+dict1["N stimator"] = list(map(stimators, model_names))
+dict1["Class weight"] = list(map(class_weight, model_names))
 
-# iter throught a dictionary
-# for i in range(len(model_names)):
-# dict1[i] = {
-#     "model name": model_names[i],
-#     "Data": population(model_names[i]),
-#     "Libraries": libraries(model_names[i]),
-#     "Algorithm": "SVM",
-#     "Kernel": kernel(model_names[i]),
-#     "class_weight": class_weight(model_names[i]),
-# }
 
-# for i in range(len(model_names)):
-#     print(dict1[i])
-
-DF = pd.DataFrame.from_dict(
-    data=dict1,
-    # orient=index,
-    # columns=["model name", "Data", "Libraries", "Algorithm", "Kernel", "class_weight"],
-)
+DF = pd.DataFrame.from_dict(data=dict1,)
 DF.to_csv(
-    "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-3_a/Supervised_Models/Info_all_results/info_metrics/p3_id_models.csv"
+    "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-3_a/Supervised_Models/Info_all_results/info_metrics/RF_id_models.csv"
 )
 print(DF.head())

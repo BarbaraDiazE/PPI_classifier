@@ -1,17 +1,15 @@
+"Instructions to train SVM from ECFP6 representation"
 import pandas as pd
 from SVM_FP import SVM
 
 
 root = {
-    "root": "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-2_a/Databases/",
-    "root_Info": "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-2_a/Supervised_Models/SVM/Info",
-    "root_ROC": "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-2_a/Supervised_Models/SVM/ROC",
-    "trained_models": "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-2_a/trained_models",
+    "root": "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-3_a/Databases/",
+    "root_Info": "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-3_a/Supervised_Models/Info_all_results",
+    "root_ROC": "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-3_a/Supervised_Models/Info_all_results/ROC",
+    "trained_models": "/home/babs/Documents/DIFACQUIM/PPI_classifier/phase-3_a/Supervised_Models/models",
 }
 
-# """ECFP4 models"""
-print("ecfp4")
-print(str(root["root"]))
 Data = pd.read_csv(str(root["root"]) + str("dataset_ecfp6_p2.csv"), low_memory=False)
 print(Data.columns)
 ids = ["Unnamed: 0", "ipp_id", "chembl_id", "SMILES", "library", "PPI family", "PPI"]
@@ -36,8 +34,89 @@ execute(
     descriptors,
     0.2,
     "linear",
+    "balanced",
+    "p2_F1L6P3SVM1A",
+)
+execute(
+    root,
+    "dataset_ecfp6_p2.csv",
+    "PPI",
+    descriptors,
+    0.2,
+    "poly",
+    "balanced",
+    "p2_F2L6P3SVM2A",
+)
+execute(
+    root,
+    "dataset_ecfp6_p2.csv",
+    "PPI",
+    descriptors,
+    0.2,
+    "rbf",
+    "balanced",
+    "p2_F2L6P3SVM3A",
+)
+execute(
+    root,
+    "dataset_ecfp6_p2.csv",
+    "PPI",
+    descriptors,
+    0.2,
+    "sigmoid",
+    "balanced",
+    "p2_F2L6P3SVM4A",
+)
+execute(
+    root,
+    "dataset_ecfp6_p2.csv",
+    "PPI",
+    descriptors,
+    0.3,
+    "linear",
+    "balanced",
+    "p2_F2L6P5SVM1A",
+)
+execute(
+    root,
+    "dataset_ecfp6_p2.csv",
+    "PPI",
+    descriptors,
+    0.3,
+    "poly",
+    "balanced",
+    "p2_F2L6P5SVM2A",
+)
+execute(
+    root,
+    "dataset_ecfp6_p2.csv",
+    "PPI",
+    descriptors,
+    0.3,
+    "rbf",
+    "balanced",
+    "p2_F2L6P5SVM3A",
+)
+execute(
+    root,
+    "dataset_ecfp6_p2.csv",
+    "PPI",
+    descriptors,
+    0.3,
+    "sigmoid",
+    "balanced",
+    "p2_F2L6P5SVM4A",
+)
+# Not balanced
+execute(
+    root,
+    "dataset_ecfp6_p2.csv",
+    "PPI",
+    descriptors,
+    0.2,
+    "linear",
     None,
-    "p2_F1L6P3SVM1ABN",
+    "p2_F2L6P3SVM1B",
 )
 execute(
     root,
@@ -47,7 +126,7 @@ execute(
     0.2,
     "poly",
     None,
-    "p2_F2L6P3SVM2ABN",
+    "p2_F2L6P3SVM2B",
 )
 execute(
     root,
@@ -57,7 +136,7 @@ execute(
     0.2,
     "rbf",
     None,
-    "p2_F2L6P3SVM3ABN",
+    "p2_F2L6P3SVM3B",
 )
 execute(
     root,
@@ -67,7 +146,7 @@ execute(
     0.2,
     "sigmoid",
     None,
-    "p2_F2L6P3SVM4ABN",
+    "p2_F2L6P3SVM4B",
 )
 execute(
     root,
@@ -77,7 +156,7 @@ execute(
     0.3,
     "linear",
     None,
-    "p2_F2L6P5SVM1ABN",
+    "p2_F2L6P5SVM1B",
 )
 execute(
     root,
@@ -87,7 +166,7 @@ execute(
     0.3,
     "poly",
     None,
-    "p2_F2L6P5SVM2ABN",
+    "p2_F2L6P5SVM2B",
 )
 execute(
     root,
@@ -97,7 +176,7 @@ execute(
     0.3,
     "rbf",
     None,
-    "p2_F2L6P5SVM3ABN",
+    "p2_F2L6P5SVM3B",
 )
 execute(
     root,
@@ -107,5 +186,5 @@ execute(
     0.3,
     "sigmoid",
     None,
-    "p2_F2L6P5SVM4ABN",
+    "p2_F2L6P5SVM4B",
 )
