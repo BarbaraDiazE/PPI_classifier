@@ -87,7 +87,7 @@ dict1["Data"] = list(map(population, model_names))
 dict1["Libraries"] = list(map(libraries, model_names))
 dict1["Algorithm"] = ["SVM" for i in range(len(model_names))]
 dict1["Kernel"] = list(map(kernel, model_names))
-dict1["Class_weight"] = list(map(class_weight, model_names))
+dict1["Class weight"] = list(map(class_weight, model_names))
 
 DF = pd.DataFrame.from_dict(data=dict1)
 DF.to_csv(
