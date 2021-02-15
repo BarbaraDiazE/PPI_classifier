@@ -22,7 +22,7 @@ DF = pd.DataFrame
 # read id models csv
 
 
-class AC:
+class SVM_M:
     def __init__(self):
         self.id_dataframe = pd.read_csv(
             f'{root["root"]}{"SVM_id_models.csv"}', index_col="Unnamed: 0"
