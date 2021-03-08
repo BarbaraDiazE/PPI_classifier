@@ -110,13 +110,15 @@ def plot(DF, output_figure):
         vmin=0.50,
         vmax=1.0,
         cbar_kws={"shrink": 0.8},
+        yticklabels=True,
     )
-    ax.tick_params(axis="both", labelsize=8)
+    ax.tick_params(axis="x", labelsize=12)
+    ax.tick_params(axis="y", labelsize=6)  #
 
     plt.legend(bbox_to_anchor=(1.01, 1), borderaxespad=0)
-    plt.xlabel("Metrics", fontsize=10)
-    plt.ylabel("Trained models", fontsize=10)
-    plt.title("Summary metrics", fontsize=12)
+    plt.xlabel("Metrics", fontsize=14)
+    plt.ylabel("Trained models", fontsize=14)
+    # plt.title("Summary metrics", fontsize=14)
     ###modify bar
     cbar = ax.collections[0].colorbar
     cbar.ax.tick_params(labelsize=12)
