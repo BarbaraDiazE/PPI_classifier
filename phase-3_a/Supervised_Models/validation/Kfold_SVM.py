@@ -78,38 +78,31 @@ descriptors = numerical_data.columns.to_list()
 del Data
 print(len(descriptors))
 
-# RF1
-print("###RF1###")
+# SVM9
+print("###SVM###")
 A = Kfold(
-    root, "dataset_ecfp4_p2.csv", "RF_p2_F1L6P3ERF2A.pkl", "PPI", descriptors, 0.2
+    root, "dataset_ecfp4_p2.csv", "SVM_p2_F1L6P5SVM1A.pkl", "PPI", descriptors, 0.3
 )
 A.evaluate_model()
 
-# RF5
-print("###RF5###")
+# SVM10
+print("###SVM###")
 A = Kfold(
-    root, "dataset_ecfp4_p2.csv", "RF_p2_F1L6P3GRF2A.pkl", "PPI", descriptors, 0.2
+    root, "dataset_ecfp4_p2.csv", "SVM_p2_F1L6P5SVM1B.pkl", "PPI", descriptors, 0.3
 )
 A.evaluate_model()
 
-# RF7
-print("###RF7###")
+# SVM24
+print("###SVM###")
 A = Kfold(
-    root, "dataset_ecfp4_p2.csv", "RF_p2_F1L6P3GRF3A.pkl", "PPI", descriptors, 0.3
+    root, "dataset_ecfp6_p2.csv", "SVM_p2_F2L6P5SVM1A.pkl", "PPI", descriptors, 0.3
 )
 A.evaluate_model()
 
-# RF12
-print("###RF12###")
+# SVM25
+print("###SVM2###")
 A = Kfold(
-    root, "dataset_ecfp4_p2.csv", "RF_p2_F1L6P5GRF1B.pkl", "PPI", descriptors, 0.3
-)
-A.evaluate_model()
-
-# RF13
-print("###RF13###")
-A = Kfold(
-    root, "dataset_ecfp4_p2.csv", "RF_p2_F1L6P5GRF2A.pkl", "PPI", descriptors, 0.3
+    root, "dataset_ecfp6_p2.csv", "SVM_p2_F2L6P5SVM1B.pkl", "PPI", descriptors, 0.3
 )
 A.evaluate_model()
 
