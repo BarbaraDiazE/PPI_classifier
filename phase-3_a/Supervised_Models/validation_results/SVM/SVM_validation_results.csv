@@ -1,0 +1,5 @@
+,model,accuracy mean,accuracy std
+0,SVM9,0.9417,0.0102
+1,SVM10,0.9426,0.0095
+2,SVM24,0.9358,0.0135
+3,SVM25,0.9346,0.0142

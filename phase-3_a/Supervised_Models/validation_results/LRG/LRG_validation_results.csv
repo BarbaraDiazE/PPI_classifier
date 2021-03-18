@@ -1,0 +1,5 @@
+,model,accuracy mean,accuracy std
+0,LRF31,0.8723,0.0164
+1,LRG32,0.8723,0.0162
+2,LRG33,0.8673,0.0170
+
